@@ -1,0 +1,349 @@
+# depslib dependency file v1.0
+1551557774 source:/home/vld/aaidsl/c_vector/c_vector.c
+	<string.h>
+	<stdlib.h>
+	"c_vector.h"
+
+1551558028 /home/vld/aaidsl/c_vector/c_vector.h
+	<stdbool.h>
+	<stddef.h>
+
+1551557934 source:/home/vld/aaidsl/c_vector/test.c
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+	<stdbool.h>
+	"c_vector.h"
+	"test.h"
+
+1547503278 /home/vld/aaidsl/c_vector/test.h
+
+1551558223 source:/home/vld/aaidsl/tests/all_tests/test_all.c
+	<stdio.h>
+	"../../c_vector/test_c_vect.h"
+	"../../ov_map/test_ov_map.h"
+	"../../ov_set/test_ov_set.h"
+	"../../ov_multimap/test_ov_mmap.h"
+	"../../ov_multiset/test_ov_mset.h"
+	"../../mem_pool/test_mem_pool.h"
+	"../../bit_vector/test_bit_vect.h"
+	"../../oa_htable/test_oa_htbl.h"
+	"../../cv_htable/test_cv_htbl.h"
+
+1547503278 /home/vld/aaidsl/c_vector/test_c_vect.h
+
+1550926029 source:/home/vld/aaidsl/ov_map/ov_map.c
+	"ov_map.h"
+
+1550929242 /home/vld/aaidsl/ov_map/ov_map.h
+	"../c_vector/c_vector.h"
+
+1547674582 source:/home/vld/aaidsl/ov_map/test.c
+	<stdio.h>
+	<string.h>
+	"ov_map.h"
+	"test.h"
+
+1547503278 /home/vld/aaidsl/ov_map/test.h
+
+1547503278 /home/vld/aaidsl/ov_map/test_ov_map.h
+
+1547503278 source:/home/vld/aaidsl/ov_set/ov_set.c
+	"ov_set.h"
+
+1550966028 /home/vld/aaidsl/ov_set/ov_set.h
+	"../c_vector/c_vector.h"
+
+1547674582 source:/home/vld/aaidsl/ov_set/test.c
+	<stdio.h>
+	"ov_set.h"
+	"test.h"
+
+1547503278 /home/vld/aaidsl/ov_set/test.h
+
+1547503278 /home/vld/aaidsl/ov_set/test_ov_set.h
+
+1551555677 source:/home/vld/aaidsl/ov_multimap/ov_multimap.c
+	<stdlib.h>
+	<string.h>
+	"ov_multimap.h"
+
+1551556140 /home/vld/aaidsl/ov_multimap/ov_multimap.h
+	"../c_vector/c_vector.h"
+	"../ov_set/ov_set.h"
+
+1551555985 source:/home/vld/aaidsl/ov_multimap/test.c
+	<stdio.h>
+	<string.h>
+	<stdbool.h>
+	"ov_multimap.h"
+	"test.h"
+
+1547503278 /home/vld/aaidsl/ov_multimap/test.h
+
+1547503278 /home/vld/aaidsl/ov_multimap/test_ov_mmap.h
+
+1551556053 source:/home/vld/aaidsl/ov_multiset/ov_multiset.c
+	<stdlib.h>
+	<string.h>
+	"ov_multiset.h"
+
+1551555218 /home/vld/aaidsl/ov_multiset/ov_multiset.h
+	"../c_vector/c_vector.h"
+
+1551555897 source:/home/vld/aaidsl/ov_multiset/test.c
+	<stdio.h>
+	<string.h>
+	<stdbool.h>
+	<math.h>
+	"ov_multiset.h"
+	"test.h"
+
+1547503278 /home/vld/aaidsl/ov_multiset/test.h
+
+1547503278 /home/vld/aaidsl/ov_multiset/test_ov_mset.h
+
+1547503278 source:/home/vld/aaidsl/mem_zone/mem_zone.c
+	<string.h>
+	<stdbool.h>
+	"mem_zone.h"
+
+1547503278 /home/vld/aaidsl/mem_zone/mem_zone.h
+	"../c_vector/c_vector.h"
+
+1547674582 source:/home/vld/aaidsl/mem_zone/test.c
+	<stdio.h>
+	<string.h>
+	<stdbool.h>
+	"mem_zone.h"
+	"test.h"
+
+1547503278 /home/vld/aaidsl/mem_zone/test.h
+
+1547503278 /home/vld/aaidsl/mem_zone/test_mem_zone.h
+
+1551556561 source:/home/vld/aaidsl/bit_vector/bit_vector.c
+	<string.h>
+	<limits.h>
+	<stdlib.h>
+	"bit_vector.h"
+
+1551556599 /home/vld/aaidsl/bit_vector/bit_vector.h
+	<stdbool.h>
+
+1551556498 source:/home/vld/aaidsl/bit_vector/test.c
+	<stdio.h>
+	<string.h>
+	<stdbool.h>
+	<limits.h>
+	"bit_vector.h"
+	"test.h"
+
+1547503278 /home/vld/aaidsl/bit_vector/test.h
+
+1547503278 /home/vld/aaidsl/bit_vector/test_bit_vect.h
+
+1547503278 source:/home/vld/GitHub/array_ds/array_ds/bit_vector/bit_vector.c
+	<string.h>
+	<limits.h>
+	"bit_vector.h"
+
+1547503278 /home/vld/GitHub/array_ds/array_ds/bit_vector/bit_vector.h
+	"../c_vector/c_vector.h"
+
+1547503278 /home/vld/GitHub/array_ds/array_ds/c_vector/c_vector.h
+	<stdbool.h>
+	<stddef.h>
+
+1547503278 source:/home/vld/GitHub/array_ds/array_ds/bit_vector/test.c
+	<stdio.h>
+	<stdbool.h>
+	<limits.h>
+	"bit_vector.h"
+	"test.h"
+
+1547503278 /home/vld/GitHub/array_ds/array_ds/bit_vector/test.h
+
+1547503278 source:/home/vld/GitHub/array_ds/array_ds/c_vector/c_vector.c
+	<string.h>
+	<stdlib.h>
+	"c_vector.h"
+
+1547503278 source:/home/vld/GitHub/array_ds/array_ds/c_vector/test.c
+	<stdio.h>
+	<stdlib.h>
+	<stdbool.h>
+	"c_vector.h"
+	"test.h"
+
+1547503278 /home/vld/GitHub/array_ds/array_ds/c_vector/test.h
+
+1547503278 source:/home/vld/GitHub/array_ds/array_ds/mem_zone/mem_zone.c
+	<string.h>
+	<stdbool.h>
+	"mem_zone.h"
+
+1547503278 /home/vld/GitHub/array_ds/array_ds/mem_zone/mem_zone.h
+	"../c_vector/c_vector.h"
+
+1547503278 source:/home/vld/GitHub/array_ds/array_ds/mem_zone/test.c
+	<stdio.h>
+	<string.h>
+	<stdbool.h>
+	"mem_zone.h"
+	"test.h"
+
+1547503278 /home/vld/GitHub/array_ds/array_ds/mem_zone/test.h
+
+1547503278 source:/home/vld/GitHub/array_ds/array_ds/ov_map/ov_map.c
+	"ov_map.h"
+
+1547503278 /home/vld/GitHub/array_ds/array_ds/ov_map/ov_map.h
+	"../c_vector/c_vector.h"
+
+1547503278 source:/home/vld/GitHub/array_ds/array_ds/ov_map/test.c
+	<stdio.h>
+	<string.h>
+	"ov_map.h"
+	"test.h"
+
+1547503278 /home/vld/GitHub/array_ds/array_ds/ov_map/test.h
+
+1547503278 source:/home/vld/GitHub/array_ds/array_ds/ov_multimap/ov_multimap.c
+	<stdlib.h>
+	<string.h>
+	"ov_multimap.h"
+
+1547503278 /home/vld/GitHub/array_ds/array_ds/ov_multimap/ov_multimap.h
+	"../c_vector/c_vector.h"
+	"../ov_set/ov_set.h"
+
+1547503278 /home/vld/GitHub/array_ds/array_ds/ov_set/ov_set.h
+	"../c_vector/c_vector.h"
+
+1547503278 source:/home/vld/GitHub/array_ds/array_ds/ov_multimap/test.c
+	<stdio.h>
+	<string.h>
+	<stdbool.h>
+	"ov_multimap.h"
+	"test.h"
+
+1547503278 /home/vld/GitHub/array_ds/array_ds/ov_multimap/test.h
+
+1547503278 source:/home/vld/GitHub/array_ds/array_ds/ov_multiset/ov_multiset.c
+	<stdlib.h>
+	<string.h>
+	"ov_multiset.h"
+
+1547503278 /home/vld/GitHub/array_ds/array_ds/ov_multiset/ov_multiset.h
+	"../c_vector/c_vector.h"
+
+1547503278 source:/home/vld/GitHub/array_ds/array_ds/ov_multiset/test.c
+	<stdio.h>
+	<stdbool.h>
+	<math.h>
+	"ov_multiset.h"
+	"test.h"
+
+1547503278 /home/vld/GitHub/array_ds/array_ds/ov_multiset/test.h
+
+1547503278 source:/home/vld/GitHub/array_ds/array_ds/ov_set/ov_set.c
+	"ov_set.h"
+
+1547503278 source:/home/vld/GitHub/array_ds/array_ds/ov_set/test.c
+	<stdio.h>
+	"ov_set.h"
+	"test.h"
+
+1547503278 /home/vld/GitHub/array_ds/array_ds/ov_set/test.h
+
+1547503278 source:/home/vld/GitHub/array_ds/array_ds/tests/all_tests/test_all.c
+	<stdio.h>
+	"../../c_vector/test_c_vect.h"
+	"../../ov_map/test_ov_map.h"
+	"../../ov_set/test_ov_set.h"
+	"../../ov_multimap/test_ov_mmap.h"
+	"../../ov_multiset/test_ov_mset.h"
+	"../../mem_zone/test_mem_zone.h"
+	"../../bit_vector/test_bit_vect.h"
+
+1547503278 /home/vld/GitHub/array_ds/array_ds/c_vector/test_c_vect.h
+
+1547503278 /home/vld/GitHub/array_ds/array_ds/ov_map/test_ov_map.h
+
+1547503278 /home/vld/GitHub/array_ds/array_ds/ov_set/test_ov_set.h
+
+1547503278 /home/vld/GitHub/array_ds/array_ds/ov_multimap/test_ov_mmap.h
+
+1547503278 /home/vld/GitHub/array_ds/array_ds/ov_multiset/test_ov_mset.h
+
+1547503278 /home/vld/GitHub/array_ds/array_ds/mem_zone/test_mem_zone.h
+
+1547503278 /home/vld/GitHub/array_ds/array_ds/bit_vector/test_bit_vect.h
+
+1551556772 source:/home/vld/aaidsl/mem_pool/mem_pool.c
+	<string.h>
+	<stdlib.h>
+	<stdbool.h>
+	"mem_pool.h"
+
+1551557662 /home/vld/aaidsl/mem_pool/mem_pool.h
+	"../c_vector/c_vector.h"
+
+1551557098 source:/home/vld/aaidsl/mem_pool/test.c
+	<stdio.h>
+	<string.h>
+	<stdbool.h>
+	"mem_pool.h"
+	"test.h"
+
+1547503278 /home/vld/aaidsl/mem_pool/test.h
+
+1551557297 source:/home/vld/aaidsl/oa_htable/oa_htable.c
+	<math.h>
+	<string.h>
+	"oa_htable.h"
+	"oah_default_hash.c"
+
+1551557619 /home/vld/aaidsl/oa_htable/oa_htable.h
+	"../c_vector/c_vector.h"
+	"../bit_vector/bit_vector.h"
+
+1549531014 /home/vld/aaidsl/oa_htable/oah_default_hash.c
+
+1551557522 source:/home/vld/aaidsl/oa_htable/test.c
+	<math.h>
+	<stdio.h>
+	<string.h>
+	<limits.h>
+	<stdbool.h>
+	"oa_htable.h"
+	"test.h"
+
+1547503278 /home/vld/aaidsl/oa_htable/test.h
+
+1550697902 /home/vld/aaidsl/mem_pool/test_mem_pool.h
+
+1549314055 /home/vld/aaidsl/oa_htable/test_oa_htbl.h
+
+1551554787 source:/home/vld/aaidsl/cv_htable/cv_htable.c
+	<string.h>
+	"cv_htable.h"
+
+1551553947 /home/vld/aaidsl/cv_htable/cv_htable.h
+	"../c_vector/c_vector.h"
+	"cvh_default_hash.c"
+
+1551551827 /home/vld/aaidsl/cv_htable/cvh_default_hash.c
+
+1551554351 source:/home/vld/aaidsl/cv_htable/test.c
+	<stdio.h>
+	<string.h>
+	<stdbool.h>
+	"cv_htable.h"
+	"test.h"
+
+1547503278 /home/vld/aaidsl/cv_htable/test.h
+
+1551551470 /home/vld/aaidsl/cv_htable/test_cv_htbl.h
+

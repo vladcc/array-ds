@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="timings" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/timings" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-std=c++11" />
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/timings" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O3" />
+				</Compiler>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+		</Compiler>
+		<Unit filename="../../../c_vector/c_vector.c">
+			<Option compilerVar="CPP" />
+		</Unit>
+		<Unit filename="../../../c_vector/c_vector.h" />
+		<Unit filename="../../../ov_set/ov_set.c">
+			<Option compilerVar="CPP" />
+		</Unit>
+		<Unit filename="../../../ov_set/ov_set.h" />
+		<Unit filename="../main.cpp" />
+		<Unit filename="../sets/set_times.cpp" />
+		<Unit filename="../sets/set_times.h" />
+		<Unit filename="../unordered_sets/bit_vector.cpp">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../unordered_sets/bit_vector.h" />
+		<Unit filename="../unordered_sets/c_vector.cpp">
+			<Option compilerVar="CC" />
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../unordered_sets/c_vector.h" />
+		<Unit filename="../unordered_sets/cv_htable.cpp" />
+		<Unit filename="../unordered_sets/cv_htable.h" />
+		<Unit filename="../unordered_sets/cvh_default_hash.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../unordered_sets/oa_htable.cpp">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../unordered_sets/oa_htable.h" />
+		<Unit filename="../unordered_sets/usets.cpp" />
+		<Unit filename="../unordered_sets/usets.h" />
+		<Unit filename="../vect_times/vector_times.cpp" />
+		<Unit filename="../vect_times/vector_times.h" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

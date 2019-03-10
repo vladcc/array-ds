@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_workspace_file>
+	<Workspace title="Workspace">
+		<Project filename="../ov_map/proj/ov_map.cbp" />
+		<Project filename="../ov_set/proj/ov_set.cbp" />
+		<Project filename="../c_vector/proj/c_vector.cbp" />
+		<Project filename="../ov_multiset/proj/ov_multiset.cbp" />
+		<Project filename="../ov_multimap/proj/ov_multimap.cbp" />
+		<Project filename="../bit_vector/proj/bit_vector.cbp" />
+		<Project filename="../mem_pool/proj/mem_pool.cbp" />
+		<Project filename="../oa_htable/proj/oa_htable.cbp" />
+		<Project filename="../cv_htable/proj/cv_htable.cbp" />
+		<Project filename="../tests/timings/proj/timings.cbp" />
+		<Project filename="../tests/all_tests/proj/all_tests.cbp" />
+	</Workspace>
+</CodeBlocks_workspace_file>

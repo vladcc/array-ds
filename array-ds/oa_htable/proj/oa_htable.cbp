@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="oa_htable" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/oa_htable" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/oa_htable" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+		</Compiler>
+		<Unit filename="../../bit_vector/bit_vector.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../bit_vector/bit_vector.h" />
+		<Unit filename="../../c_vector/c_vector.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../c_vector/c_vector.h" />
+		<Unit filename="../local_test.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../oa_htable.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../oa_htable.h" />
+		<Unit filename="../oah_default_hash.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../test.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../test.h" />
+		<Unit filename="../test_oa_htbl.h" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
