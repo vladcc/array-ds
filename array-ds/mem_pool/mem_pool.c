@@ -62,11 +62,13 @@ void * mpl_get(mem_pool * mpl)
 
 void * mpl_reset(mem_pool * mpl)
 {
-    int elem_size = mpl->elem_size;
-    int node_cap = mpl->node_cap;
+    mpl->elem_count = 0;
+    c_vector * the_pool = &(mpl->the_pool);
 
-    mpl_destroy(mpl);
-    return mpl_make(mpl, elem_size, node_cap);
+    for (int i = c_vect_length(the_pool); i > 1; --i)
+        free(*((byte **)c_vect_peek_pop(the_pool)));
+
+    return mpl;
 }
 //------------------------------------------------------------------------------
 
