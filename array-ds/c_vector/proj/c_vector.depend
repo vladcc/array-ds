@@ -1,1 +1,25 @@
 # depslib dependency file v1.0
+1558635017 source:/home/vld/Projects/array-ds/array-ds/c_vector/local_test.c
+	"test_c_vect.h"
+
+1558635017 /home/vld/Projects/array-ds/array-ds/c_vector/test_c_vect.h
+
+1558635017 source:/home/vld/Projects/array-ds/array-ds/c_vector/test.c
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+	<stdbool.h>
+	"c_vector.h"
+	"test.h"
+
+1558635017 /home/vld/Projects/array-ds/array-ds/c_vector/c_vector.h
+	<stdbool.h>
+	<stddef.h>
+
+1558635017 /home/vld/Projects/array-ds/array-ds/c_vector/test.h
+
+1558720816 source:/home/vld/Projects/array-ds/array-ds/c_vector/c_vector.c
+	<string.h>
+	<stdlib.h>
+	"c_vector.h"
+

@@ -44,7 +44,7 @@ void * c_vect_make_cap(c_vector * cv, int elem_size, fcomp compar, int capacity)
         cv->arr = NULL;
         cv->compar = compar;
 
-        if ((elem_size <= 0) || !(vect = c_vect_resize(cv, capacity)))
+        if (!(vect = c_vect_resize(cv, capacity)))
             memset(cv, 0, sizeof(*cv));
     }
 
