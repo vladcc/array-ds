@@ -142,7 +142,7 @@ void * c_vect_peek_pop(c_vector * cv);
 Returns: A pointer to the popped element from the vector, NULL if the vector is
 empty.
 
-Description: Combines peek and pop in one function call and a single range
+Description: Combines peek and pop in one function call with a single range
 check.
 
 Complexity: O(1)

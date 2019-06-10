@@ -316,6 +316,11 @@ static bool test_remove_range(void)
     check(f_arr_length(vect) == 1);
     check(*(elm = f_arr_get(vect, 0)) == 1111);
 
+    check(vect == f_arr_set_length(vect, f_arr_length(vect)+1));
+    check(f_arr_length(vect) == 2);
+    check(*(elm = f_arr_get(vect, 1)) == 77777);
+    check(vect == f_arr_set_length(vect, f_arr_length(vect)-1));
+
     check(f_arr_remove_range(vect, 0, 0) == vect);
     check(f_arr_is_empty(vect));
 

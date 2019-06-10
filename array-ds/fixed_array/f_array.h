@@ -1,20 +1,17 @@
-/*  f_array.h -- a dynamic array
-    v1.122
+/*  f_array.h -- a static array
+    v1.0
 
-    A dynamic array implementation, much like the C++ arrayor.
+    A static array implementation.
     It copies whatever you provide it with inside itself. As such it can contain
     pointers to data allocated somewhere else, as well as actual copies of the
     data. Memory operations are implemented with memcpy() and memmove()
 
     The structure keeps track of the number of elements it currently has, along
-    with the maximum number of elements it can have before it has to grow,
-    which is its capacity. When any random access operation is performed, the
+    with the maximum number of elements it can have before it reaches its
+    capacity. Once the capacity is reached, no other elements can be added to
+    the array. When any random access operation is performed, the
     array checks if the requested index is in the range of 0 to the number of
-    elements minus 1, the index of its current last element, including. When
-    the capacity is reached, the array grows at the very next insert or push
-    operation. The new size is determined by the result of the multiplication
-    of its capacity by C_VECT_GROWTH_RATE. f_array does not shrink
-    automatically.
+    elements minus 1, the index of its current last element, including.
 
     f_array provides ways to insert, remove, copy, apply custom functions to
     its elements, a stack interface, sort, linear and binary search, conditional
@@ -22,7 +19,7 @@
 
     Author: Vladimir Dinev
     vld.dinev@gmail.com
-    2019-03-02
+    2019-06-10
 */
 
 #ifndef C_VECTOR_H
@@ -35,9 +32,9 @@
 /*
 When a f_array needs a buffer, it will allocate either element size or
 F_ARR_MAX_STACK_BUFF number of bytes on the stack, whichever is smaller. If the
-element size is greater than F_ARR_MAX_STACK_BUFF, the arrayor will malloc() an
+element size is greater than F_ARR_MAX_STACK_BUFF, the array will malloc() an
 additional buffer big enough for a single element, use it, and free() it every
-time. As of v1.122, f_array uses an additional buffer only for f_arr_swap()
+time. As of v1.0, f_array uses an additional buffer only for f_arr_swap()
 */
 
 // a three way comparison function like compar for qsort()
@@ -58,7 +55,7 @@ void * f_arr_make(
 /*
 Returns: far on success, NULL otherwise.
 
-Description: Creates a arrayor with 0 elements, allocates elem_size * capacity
+Description: Creates a array with 0 elements, allocates elem_size * capacity
 bytes of memory. elem_size and capacity have to be positive numbers. On failure
 *cv is zeroed out.
 
@@ -80,10 +77,10 @@ f_array f_arr_copy(const f_array * src, bool * out_success);
 /*
 Returns: A deep copy of the f_array pointed to by src. If the function fails,
 the variable pointed to by success is set to false and all members of the
-returned arrayor are set to zero.
+returned array are set to zero.
 
-Description: Makes a deep copy of src. Only the valid elements from src arrayor
-are copied. In result, the capacity of the new arrayor equals its element count.
+Description: Makes a deep copy of src. Only the valid elements from src array
+are copied. In result, the capacity of the new array equals its element count.
 success can be NULL if not used.
 
 Complexity: O(n)
@@ -95,10 +92,9 @@ Returns: A pointer to the appended element in the array on success,
 NULL otherwise.
 
 Description: Appends the data pointed to by what to the end of the array. If the
-array is full at the time of the operation, it gets reallocated and grows
-C_VECT_GROWTH_RATE times its current capacity before appending.
+array is full at the time of the operation, NULL is returned.
 
-Complexity: O(1) amortized.
+Complexity: O(1)
 */
 
 void * f_arr_pop(f_array * far);
@@ -122,10 +118,10 @@ Complexity: O(1)
 
 void * f_arr_peek_pop(f_array * far);
 /*
-Returns: A pointer to the popped element from the arrayor, NULL if the arrayor is
+Returns: A pointer to the popped element from the array, NULL if the array is
 empty.
 
-Description: Combines peek and pop in one function call and a single range
+Description: Combines peek and pop in one function call with a single range
 check.
 
 Complexity: O(1)
@@ -158,12 +154,13 @@ void * f_arr_insert_online_ind(
 #define f_arr_insert_online(far, key)\
 f_arr_insert_online_ind((far), (key), NULL)
 /*
-Returns: A pointer to the inserted element in cv. If out_index is not NULL,
+Returns: A pointer to the inserted element in far. If out_index is not NULL,
 the variable pointed to by out_index contains the index of the inserted element.
 
 Description: Inserts the element pointed to by key in its proper place in the
-ordered array cv, therefore keeping far sorted. Implemented with binary insertion
-sort. Calling this function on an unsorted array results in undefined behavior.
+ordered array far, therefore keeping far sorted. Implemented with binary
+insertion sort. Calling this function on an unsorted array results in undefined
+behavior.
 
 Complexity: O(log n) for finding the insertion point, O(n) for the insertion.
 */
@@ -192,7 +189,7 @@ int f_arr_remove_by_val(f_array * far, const void * key);
 /*
 Returns: The number of elements removed.
 
-Description: Goes through the arrayor and removes all elements with the same
+Description: Goes through the array and removes all elements with the same
 value as key, that is, all elements for which compar() returns 0 when compared
 to key.
 
@@ -224,7 +221,7 @@ void * f_arr_swap_pop_at(f_array * far, int index);
 Returns: far on success, NULL otherwise.
 
 Description: Swaps the element at index with the last element and pops it off,
-effectively removing it from the arrayor. Does not preserve the order of the
+effectively removing it from the array. Does not preserve the order of the
 elements.
 
 Complexity: O(1)
@@ -252,18 +249,18 @@ Complexity: O(n)
 
 void * f_arr_reverse(f_array * far);
 /*
-Returns: cv
+Returns: far
 
-Description: Reverses the order of elements in the arrayor by swap-popping.
+Description: Reverses the order of elements in the array by swap-popping.
 
 Complexity: O(n/2)
 */
 
 void * f_arr_set_to_val(f_array * far, const void * key);
 /*
-Returns: cv
+Returns: far
 
-Description: Sets all elements of the arrayor to the value of key.
+Description: Sets all elements of the array to the value of key.
 
 Complexity: O(n)
 */
@@ -316,7 +313,7 @@ f_arr_find_if_ind_from((far), (condition), (key), NULL, (from_index))
 #define f_arr_find_if(far, condition, key)\
 f_arr_find_if_ind_from((far), (condition), (key), NULL, 0)
 /*
-Returns: A pointer to the first element inside the arrayor starting from
+Returns: A pointer to the first element inside the array starting from
 from_index for which condition returned 0 after comparing it to key.
 
 Description: Switches the compar function inside far with condition, calls
@@ -344,7 +341,7 @@ Complexity: O(log n)
 
 void * f_arr_sort(f_array * far);
 /*
-Returns: cv
+Returns: far
 
 Description: Sorts the array if it is not sorted.
 
@@ -360,7 +357,7 @@ typedef void (*fapply_args)(void * elem, void * args);
 
 void * f_arr_apply(f_array * far, fapply fun);
 /*
-Returns: cv
+Returns: far
 
 Description: Applies a function of type fapply to all elements of the array.
 
@@ -369,7 +366,7 @@ Complexity: O(n)
 
 void * f_arr_apply_args(f_array * far, fapply_args fun, void * args);
 /*
-Returns: cv
+Returns: far
 
 Description: Applies a function of type fapply_args to
 all elements of the array.
@@ -379,11 +376,11 @@ Complexity: O(n)
 
 void * f_arr_zero_out(f_array * far);
 /*
-Returns: cv
+Returns: far
 
 Description: Fills with 0s the array memory of far up to its capacity.
 
-Complexity: O(n) where n is the number of bytes of cv's capacity.
+Complexity: O(n) where n is the number of bytes of far's capacity.
 */
 
 void * f_arr_set_length(f_array * far, int len);
@@ -392,32 +389,32 @@ Returns: far on success, NULL if len is out of range.
 
 Description: Changes the number of elements in the array, effectively expanding
 or shrinking the number of indices you have random access to. len is out of
-range if it's less than 0, or larger than cv's capacity.
+range if it's less than 0, or larger than far's capacity.
 
 Complexity: O(1)
 */
 
 void * f_arr_set_compar(f_array * far, fcomp compar);
 /*
-Returns: cv
+Returns: far
 
-Description: Changes the compar function used by cv.
+Description: Changes the compar function used by far.
 
 Complexity: O(1)
 */
 
 fcomp f_arr_compar(f_array * far);
 /*
-Returns: The address of the current compar function used by cv.
+Returns: The address of the current compar function used by far.
 
-Description: Gets the compar function of cv.
+Description: Gets the compar function of far.
 
 Complexity: O(1)
 */
 
 void * f_arr_reset(f_array * far);
 /*
-Returns: cv
+Returns: far
 
 Description: After calling this function, far would have exactly 0 elements.
 
@@ -444,7 +441,7 @@ Complexity: O(n)
 
 void * f_arr_data(f_array * far);
 /*
-Returns: A pointer to the first element of cv.
+Returns: A pointer to the first element of far.
 
 Description: Gives you the start of the array.
 
@@ -471,8 +468,7 @@ Complexity: O(1)
 
 int f_arr_capacity(f_array * far);
 /*
-Returns: The maximum number of elements the array can hold before having to
-grow.
+Returns: The maximum number of elements the array can hold.
 
 Description: Gets the capacity.
 
