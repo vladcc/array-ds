@@ -8,6 +8,7 @@
 #include "../../bit_vector/test_bit_vect.h"
 #include "../../oa_htable/test_oa_htbl.h"
 #include "../../cv_htable/test_cv_htbl.h"
+#include "../../fixed_array/test_f_arr.h"
 
 typedef struct test_funs {
     void (*run_tests)(void);
@@ -24,7 +25,8 @@ static test_funs all_tests[] = {
     {run_tests_mem_pool, tmem_pool_passed, tmem_pool_failed},
     {run_tests_bit_vect, tbit_vect_passed, tbit_vec_failed},
     {run_tests_oa_htbl, toa_htbl_passed, toa_htbl_failed},
-    {run_tests_cv_htbl, tcv_htbl_passed, tcv_htbl_failed}
+    {run_tests_cv_htbl, tcv_htbl_passed, tcv_htbl_failed},
+    {run_tests_f_array, tf_arr_passed, tf_arr_failed}
 };
 
 int main(void)

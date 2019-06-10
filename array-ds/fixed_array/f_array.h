@@ -22,8 +22,8 @@
     2019-06-10
 */
 
-#ifndef C_VECTOR_H
-#define C_VECTOR_H
+#ifndef FIXED_ARRAY_H
+#define FIXED_ARRAY_H
 
 #include <stdbool.h>
 #include <stddef.h>

@@ -1683,7 +1683,7 @@ static bool test_peek(void)
 //------------------------------------------------------------------------------
 
 static int passed, failed;
-void run_tests_f_array (void)
+void run_tests_f_array(void)
 {
     int i, end = sizeof(tests)/sizeof(*tests);
 

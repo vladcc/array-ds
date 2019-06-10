@@ -1,6 +1,6 @@
-#ifndef TEST_C_VECT_H
-#define TEST_C_VECT_H
+#ifndef TEST_F_ARR_H
+#define TEST_F_ARR_H
 void run_tests_f_array(void);
-int tf_array_passed(void);
-int tf_array_failed(void);
+int tf_arr_passed(void);
+int tf_arr_failed(void);
 #endif

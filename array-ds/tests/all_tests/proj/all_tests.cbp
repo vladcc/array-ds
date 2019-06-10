@@ -60,15 +60,24 @@
 		</Unit>
 		<Unit filename="../../../cv_htable/test.h" />
 		<Unit filename="../../../cv_htable/test_cv_htbl.h" />
+		<Unit filename="../../../fixed_array/f_array.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../../fixed_array/f_array.h" />
+		<Unit filename="../../../fixed_array/test.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../../fixed_array/test.h" />
+		<Unit filename="../../../fixed_array/test_f_arr.h" />
 		<Unit filename="../../../mem_pool/mem_pool.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="../../../mem_pool/mem_pool.h" />
 		<Unit filename="../../../mem_pool/test.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="../../../mem_zone/mem_zone.h" />
-		<Unit filename="../../../mem_zone/test.h" />
-		<Unit filename="../../../mem_zone/test_mem_zone.h" />
+		<Unit filename="../../../mem_pool/test.h" />
+		<Unit filename="../../../mem_pool/test_mem_pool.h" />
 		<Unit filename="../../../oa_htable/oa_htable.c">
 			<Option compilerVar="CC" />
 		</Unit>
