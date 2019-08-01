@@ -1,5 +1,5 @@
 /*  c_vector.h -- a dynamic array
-    v1.122
+    v1.123
 
     A dynamic array implementation, much like the C++ vector.
     It copies whatever you provide it with inside itself. As such it can contain
@@ -22,7 +22,7 @@
 
     Author: Vladimir Dinev
     vld.dinev@gmail.com
-    2019-03-02
+    2019-08-01
 */
 
 #ifndef C_VECTOR_H
@@ -423,6 +423,15 @@ Description: Fills with 0s the array memory of cv up to its capacity.
 Complexity: O(n) where n is the number of bytes of cv's capacity.
 */
 
+void * c_vect_reset(c_vector * cv);
+/*
+Returns: cv
+
+Description: After calling this function, cv would have exactly 0 elements.
+
+Complexity: O(1)
+*/
+
 void * c_vect_set_length(c_vector * cv, int len);
 /*
 Returns: cv on success, NULL if len is out of range.
@@ -443,25 +452,7 @@ Description: Changes the compar function used by cv.
 Complexity: O(1)
 */
 
-fcomp c_vect_compar(c_vector * cv);
-/*
-Returns: The address of the current compar function used by cv.
-
-Description: Gets the compar function of cv.
-
-Complexity: O(1)
-*/
-
-void * c_vect_reset(c_vector * cv);
-/*
-Returns: cv
-
-Description: After calling this function, cv would have exactly 0 elements.
-
-Complexity: O(1)
-*/
-
-bool c_vect_is_empty(c_vector * cv);
+bool c_vect_is_empty(const c_vector * cv);
 /*
 Returns: true if there are no elements in the array, false otherwise.
 
@@ -470,7 +461,7 @@ Description: Let's you know if cv is empty.
 Complexity: O(1)
 */
 
-void * c_vect_is_sorted(c_vector * cv);
+void * c_vect_is_sorted(const c_vector * cv);
 /*
 Returns: cv if the array is sorted, NULL otherwise.
 
@@ -479,7 +470,7 @@ Description: Checks if the array is sorted.
 Complexity: O(n)
 */
 
-void * c_vect_data(c_vector * cv);
+void * c_vect_data(const c_vector * cv);
 /*
 Returns: A pointer to the first element of cv.
 
@@ -488,7 +479,16 @@ Description: Gives you the start of the array.
 Complexity: O(1)
 */
 
-int c_vect_length(c_vector * cv);
+fcomp c_vect_compar(const c_vector * cv);
+/*
+Returns: The address of the current compar function used by cv.
+
+Description: Gets the compar function of cv.
+
+Complexity: O(1)
+*/
+
+int c_vect_length(const c_vector * cv);
 /*
 Returns: The number of elements in the array.
 
@@ -497,7 +497,7 @@ Description: Gets the size.
 Complexity: O(1)
 */
 
-int c_vect_elem_size(c_vector * cv);
+int c_vect_elem_size(const c_vector * cv);
 /*
 Returns: The size of an array element in byte.
 
@@ -506,7 +506,7 @@ Description: Gets the element size.
 Complexity: O(1)
 */
 
-int c_vect_capacity(c_vector * cv);
+int c_vect_capacity(const c_vector * cv);
 /*
 Returns: The maximum number of elements the array can hold before having to
 grow.

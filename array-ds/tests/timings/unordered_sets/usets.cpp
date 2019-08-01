@@ -4,8 +4,8 @@
 #include <unordered_set>
 #include <vector>
 #include <algorithm>
-#include "oa_htable.h"
-#include "cv_htable.h"
+#include "oa_htable.hpp"
+#include "cv_htable.hpp"
 using namespace std;
 
 static int compar(const void * k1, const void * k2)

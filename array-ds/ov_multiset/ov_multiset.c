@@ -142,13 +142,13 @@ void * ov_mset_erase(ov_mset * mset, const void * what)
 }
 //------------------------------------------------------------------------------
 
-int ov_mset_mplicity(ov_mset * mset, const void * what)
+int ov_mset_mplicity(const ov_mset * mset, const void * what)
 {
-    c_vector * the_vect = &(mset->the_vect);
+    const c_vector * the_vect = &(mset->the_vect);
     int real_elem_size = c_vect_elem_size(the_vect);
     int ret = 0;
 
-    void * pelm = c_vect_bsearch(the_vect, what);
+    void * pelm = c_vect_bsearch((c_vector *)the_vect, what);
     if (pelm)
         ret = *(count_ptr(pelm, real_elem_size));
 
@@ -170,7 +170,7 @@ void * ov_mset_apply_args(ov_mset * mset, fapply_const_args fun, void * args)
 }
 //------------------------------------------------------------------------------
 
-int ov_mset_orig_elem_size(ov_mset * mset)
+int ov_mset_orig_elem_size(const ov_mset * mset)
 {
     return mset->orig_elem_size;
 }

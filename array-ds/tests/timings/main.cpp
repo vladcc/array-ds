@@ -6,9 +6,9 @@
 
 int main(void)
 {
-    /*
+    ///*
     vector_times();
-    //*/
+    ///*/
 
     /*
     int times[] = {
@@ -23,9 +23,9 @@ int main(void)
             break;
         putchar('\n');
     }
-    //*/
+    */
 
-    ///*
+    /*
     int utimes[] = {
             //5, 10, 15, 100, 150,
             //15000, 25000, 35000, 45000, 150000, 350000,
@@ -39,6 +39,6 @@ int main(void)
             break;
         putchar('\n');
     }
-    //*/
+    */
     return 0;
 }

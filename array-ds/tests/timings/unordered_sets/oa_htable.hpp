@@ -1,5 +1,5 @@
 /*  oa_htable.h -- open address hash table
-    v1.1
+    v1.11
 
     Generic open address hash table, uses c_vector as a base. Inserts an element
     only if it's not already inside. In other words, behaves like a set. Grows
@@ -7,14 +7,14 @@
 
     Author: Vladimir Dinev
     vld.dinev@gmail.com
-    2019-03-02
+    2019-08-01
 */
 
 #ifndef OA_HTBL_H
 #define OA_HTBL_H
 
-#include "c_vector.h"
-#include "bit_vector.h"
+#include "c_vector.hpp"
+#include "bit_vector.hpp"
 
 #define OAH_DEFAULT_CAPACITY    1024
 #define OAH_DEFAULT_LOAD_FACT   0.7
@@ -71,7 +71,7 @@ Complexity: O(n) where n is the capacity of the underlying c_vector.
 */
 
 
-const void * oa_htbl_lookup(oa_htbl * oaht, const void * key);
+const void * oa_htbl_lookup(const oa_htbl * oaht, const void * key);
 /*
 Returns: A pointer to key inside oaht if found, NULL otherwise.
 
@@ -130,7 +130,7 @@ while ((pdata = oa_htbl_iterate(oaht, iter)))
 Complexity: O(n)
 */
 
-bool oa_htbl_is_empty(oa_htbl * oaht);
+bool oa_htbl_is_empty(const oa_htbl * oaht);
 /*
 Returns: true if oaht is empty, false otherwise.
 
@@ -139,7 +139,7 @@ Description: Lets you know if oaht is empty.
 Complexity: O(1)
 */
 
-int oa_htbl_elem_count(oa_htbl * oaht);
+int oa_htbl_elem_count(const oa_htbl * oaht);
 /*
 Returns: The number of elements inside oaht.
 
@@ -148,7 +148,7 @@ Description: Gets the number of elements inside oaht.
 Complexity: O(1)
 */
 
-int oa_htbl_elem_max(oa_htbl * oaht);
+int oa_htbl_elem_max(const oa_htbl * oaht);
 /*
 Returns: The maximum number of elements oaht can have before it has to grow.
 

@@ -213,11 +213,11 @@ const void * oa_htbl_insert(oa_htbl * oaht, const void * key)
 }
 //------------------------------------------------------------------------------
 
-const void * oa_htbl_lookup(oa_htbl * oaht, const void * key)
+const void * oa_htbl_lookup(const oa_htbl * oaht, const void * key)
 {
     int found_index;
     unsigned int key_hash;
-    return actually_find(oaht, key, &found_index, &key_hash);
+    return actually_find((oa_htbl *)oaht, key, &found_index, &key_hash);
 }
 //------------------------------------------------------------------------------
 
@@ -274,19 +274,19 @@ const void * oa_htbl_iterate_(oa_htbl * oaht, int start, int * out_so_far)
 }
 //------------------------------------------------------------------------------
 
-bool oa_htbl_is_empty(oa_htbl * oaht)
+bool oa_htbl_is_empty(const oa_htbl * oaht)
 {
     return !oaht->elem_inside;
 }
 //------------------------------------------------------------------------------
 
-int oa_htbl_elem_count(oa_htbl * oaht)
+int oa_htbl_elem_count(const oa_htbl * oaht)
 {
     return oaht->elem_inside;
 }
 //------------------------------------------------------------------------------
 
-int oa_htbl_elem_max(oa_htbl * oaht)
+int oa_htbl_elem_max(const oa_htbl * oaht)
 {
     return oaht->elem_max;
 }

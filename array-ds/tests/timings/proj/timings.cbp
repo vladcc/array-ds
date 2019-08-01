@@ -43,21 +43,21 @@
 		<Unit filename="../unordered_sets/bit_vector.cpp">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="../unordered_sets/bit_vector.h" />
+		<Unit filename="../unordered_sets/bit_vector.hpp" />
 		<Unit filename="../unordered_sets/c_vector.cpp">
 			<Option compilerVar="CC" />
 			<Option link="0" />
 		</Unit>
-		<Unit filename="../unordered_sets/c_vector.h" />
+		<Unit filename="../unordered_sets/c_vector.hpp" />
 		<Unit filename="../unordered_sets/cv_htable.cpp" />
-		<Unit filename="../unordered_sets/cv_htable.h" />
+		<Unit filename="../unordered_sets/cv_htable.hpp" />
 		<Unit filename="../unordered_sets/cvh_default_hash.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="../unordered_sets/oa_htable.cpp">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="../unordered_sets/oa_htable.h" />
+		<Unit filename="../unordered_sets/oa_htable.hpp" />
 		<Unit filename="../unordered_sets/usets.cpp" />
 		<Unit filename="../unordered_sets/usets.h" />
 		<Unit filename="../vect_times/vector_times.cpp" />

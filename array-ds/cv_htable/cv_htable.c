@@ -134,11 +134,11 @@ static const void * actually_find(
 }
 //------------------------------------------------------------------------------
 
-const void * cv_htbl_lookup(cv_htbl * cvht, const void * key)
+const void * cv_htbl_lookup(const cv_htbl * cvht, const void * key)
 {
     int out_index;
     unsigned int out_hash;
-    return actually_find(cvht, key, &out_index, &out_hash);
+    return actually_find((cv_htbl *)cvht, key, &out_index, &out_hash);
 }
 //------------------------------------------------------------------------------
 
@@ -272,19 +272,19 @@ const void * cv_htbl_iterate_(cv_htbl * cvht,
 }
 //------------------------------------------------------------------------------
 
-bool cv_htbl_is_empty(cv_htbl * cvht)
+bool cv_htbl_is_empty(const cv_htbl * cvht)
 {
     return !cvht->elem_inside;
 }
 //------------------------------------------------------------------------------
 
-int cv_htbl_elem_count(cv_htbl * cvht)
+int cv_htbl_elem_count(const cv_htbl * cvht)
 {
     return cvht->elem_inside;
 }
 //------------------------------------------------------------------------------
 
-int cv_htbl_elem_max(cv_htbl * cvht)
+int cv_htbl_elem_max(const cv_htbl * cvht)
 {
     return cvht->elem_max;
 }

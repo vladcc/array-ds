@@ -1,7 +1,7 @@
 #include <string.h>
 #include <limits.h>
 #include <stdlib.h>
-#include "bit_vector.h"
+#include "bit_vector.hpp"
 
 typedef unsigned char byte;
 //------------------------------------------------------------------------------
@@ -67,7 +67,7 @@ void * bit_vect_set_byte_pattern(bit_vector * bv, unsigned char val)
 }
 //------------------------------------------------------------------------------
 
-void * bit_vect_get(bit_vector * bv, int bit_num, int * out_bit_val)
+void * bit_vect_get(const bit_vector * bv, int bit_num, int * out_bit_val)
 {
     void * ret = NULL;
     int all_bits = bv->bits_count;
@@ -77,7 +77,7 @@ void * bit_vect_get(bit_vector * bv, int bit_num, int * out_bit_val)
     {
         int target = bit_num % CHAR_BIT;
         *out_bit_val = (the_bits[bit_num/CHAR_BIT] & (1 << target)) >> target;
-        ret = bv;
+        ret = (void *)bv;
     }
 
     return ret;
@@ -132,7 +132,7 @@ void * bit_vect_toggle(bit_vector * bv, int bit_num)
 }
 //------------------------------------------------------------------------------
 
-int bit_vect_num_of_bits(bit_vector * bv)
+int bit_vect_num_of_bits(const bit_vector * bv)
 {
     return bv->bits_count;
 }

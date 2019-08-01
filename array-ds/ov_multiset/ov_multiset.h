@@ -1,5 +1,5 @@
 /*  ov_multiset.h -- ordered vector multiset
-    v1.1
+    v1.11
 
     It's a set which counts how many times an element has been inserted (its
     multiplicity) As such it allocates extra memory for a counter, which is an
@@ -7,7 +7,7 @@
 
     Author: Vladimir Dinev
     vld.dinev@gmail.com
-    2019-03-02
+    2019-08-01
 */
 
 #ifndef OV_MULTISET_H
@@ -75,7 +75,7 @@ c_vect_resize(&(mset)->the_vect, (new_cap))
 #define ov_mset_length(mset)        c_vect_length(&(mset)->the_vect)
 #define ov_mset_capacity(mset)      c_vect_capacity(&(mset)->the_vect)
 
-int ov_mset_orig_elem_size(ov_mset * mset);
+int ov_mset_orig_elem_size(const ov_mset * mset);
 /*
 Returns: The size of an element inside mset, as passed to ov_mset_make()
 
@@ -154,7 +154,7 @@ Complexity: O(log n)
 */
 
 
-int ov_mset_mplicity(ov_mset * mset, const void * what);
+int ov_mset_mplicity(const ov_mset * mset, const void * what);
 /*
 Returns: The multiplicity of what in mset, -1 if what is not a member of mset.
 

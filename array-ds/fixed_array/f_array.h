@@ -1,5 +1,5 @@
 /*  f_array.h -- a static array
-    v1.0
+    v1.1
 
     A static array implementation.
     It copies whatever you provide it with inside itself. As such it can contain
@@ -19,7 +19,7 @@
 
     Author: Vladimir Dinev
     vld.dinev@gmail.com
-    2019-06-10
+    2019-08-01
 */
 
 #ifndef FIXED_ARRAY_H
@@ -383,6 +383,15 @@ Description: Fills with 0s the array memory of far up to its capacity.
 Complexity: O(n) where n is the number of bytes of far's capacity.
 */
 
+void * f_arr_reset(f_array * far);
+/*
+Returns: far
+
+Description: After calling this function, far would have exactly 0 elements.
+
+Complexity: O(1)
+*/
+
 void * f_arr_set_length(f_array * far, int len);
 /*
 Returns: far on success, NULL if len is out of range.
@@ -403,25 +412,7 @@ Description: Changes the compar function used by far.
 Complexity: O(1)
 */
 
-fcomp f_arr_compar(f_array * far);
-/*
-Returns: The address of the current compar function used by far.
-
-Description: Gets the compar function of far.
-
-Complexity: O(1)
-*/
-
-void * f_arr_reset(f_array * far);
-/*
-Returns: far
-
-Description: After calling this function, far would have exactly 0 elements.
-
-Complexity: O(1)
-*/
-
-bool f_arr_is_empty(f_array * far);
+bool f_arr_is_empty(const f_array * far);
 /*
 Returns: true if there are no elements in the array, false otherwise.
 
@@ -430,7 +421,7 @@ Description: Let's you know if far is empty.
 Complexity: O(1)
 */
 
-void * f_arr_is_sorted(f_array * far);
+void * f_arr_is_sorted(const f_array * far);
 /*
 Returns: far if the array is sorted, NULL otherwise.
 
@@ -439,7 +430,16 @@ Description: Checks if the array is sorted.
 Complexity: O(n)
 */
 
-void * f_arr_data(f_array * far);
+fcomp f_arr_compar(const f_array * far);
+/*
+Returns: The address of the current compar function used by far.
+
+Description: Gets the compar function of far.
+
+Complexity: O(1)
+*/
+
+void * f_arr_data(const f_array * far);
 /*
 Returns: A pointer to the first element of far.
 
@@ -448,7 +448,7 @@ Description: Gives you the start of the array.
 Complexity: O(1)
 */
 
-int f_arr_length(f_array * far);
+int f_arr_length(const f_array * far);
 /*
 Returns: The number of elements in the array.
 
@@ -457,7 +457,7 @@ Description: Gets the size.
 Complexity: O(1)
 */
 
-int f_arr_elem_size(f_array * far);
+int f_arr_elem_size(const f_array * far);
 /*
 Returns: The size of an array element in byte.
 
@@ -466,7 +466,7 @@ Description: Gets the element size.
 Complexity: O(1)
 */
 
-int f_arr_capacity(f_array * far);
+int f_arr_capacity(const f_array * far);
 /*
 Returns: The maximum number of elements the array can hold.
 

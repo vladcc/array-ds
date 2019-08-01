@@ -1,0 +1,54 @@
+2019-08-01
+c_vector: old v1.122, new v1.123
+const added to:
+c_vect_capacity()
+c_vect_elem_size()
+c_vect_length()
+c_vect_data()
+c_vect_is_empty()
+c_vect_compar()
+c_vect_is_sorted()
+
+ov_multiset: old v1.1, new v1.11
+const added to:
+ov_mset_mplicity()
+ov_mset_orig_elem_size()
+
+ov_multimap: old v1.1, new v1.111
+const added to:
+ov_mmap_val_capcity()
+ov_mmap_val_size()
+ov_mmap_real_key_size()
+ov_mmap_orig_key_size()
+
+bit_vector: old v1.1, new v1.11
+const added to:
+bit_vect_num_of_bits()
+bit_vect_get()
+
+oa_htable: v1.1, new v1.11
+const added to:
+oa_htbl_lookup()
+oa_htbl_is_empty()
+oa_htbl_elem_count()
+oa_htbl_elem_max()
+ 
+cv_htable: old v1.0, new v1.1
+const added to:
+cv_htbl_elem_max()
+cv_htbl_elem_count()
+cv_htbl_is_empty()
+cv_htbl_lookup()
+
+f_array: v1.0, new v1.1
+const added to:
+f_arr_capacity()
+f_arr_elem_size()
+f_arr_length()
+f_arr_data()
+f_arr_is_sorted()
+f_arr_is_empty()
+f_arr_compar()
+
+cpp code updated in sync
+cpp headers renamed to hpp

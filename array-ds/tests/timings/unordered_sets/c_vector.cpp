@@ -1,6 +1,6 @@
 #include <string.h>
 #include <stdlib.h>
-#include "c_vector.h"
+#include "c_vector.hpp"
 
 typedef unsigned char byte;
 
@@ -44,7 +44,7 @@ void * c_vect_make_cap(c_vector * cv, int elem_size, fcomp compar, int capacity)
         cv->arr = NULL;
         cv->compar = compar;
 
-        if ((elem_size <= 0) || !(vect = c_vect_resize(cv, capacity)))
+        if (!(vect = c_vect_resize(cv, capacity)))
             memset(cv, 0, sizeof(*cv));
     }
 
@@ -195,13 +195,13 @@ void * c_vect_find_if_ind_from(
 }
 //------------------------------------------------------------------------------
 
-void * c_vect_is_sorted(c_vector * cv)
+void * c_vect_is_sorted(const c_vector * cv)
 {
     byte * data = (byte *)cv->arr;
     int elem_size = cv->elem_size, elem_count = cv->elem_count;
     fcomp compar = cv->compar;
 
-    void * result = elem_count ? cv : NULL;
+    void * result = elem_count ? (c_vector *)cv : NULL;
 
     for (int i = 1, prev = i - 1; i < elem_count; ++i, ++prev)
     {
@@ -607,38 +607,38 @@ void * c_vect_set_compar(c_vector * cv, fcomp compar)
 }
 //------------------------------------------------------------------------------
 
-fcomp c_vect_compar(c_vector * cv)
+fcomp c_vect_compar(const c_vector * cv)
 {
     return cv->compar;
 }
 //------------------------------------------------------------------------------
 
-bool c_vect_is_empty(c_vector * cv)
+bool c_vect_is_empty(const c_vector * cv)
 {
     return !cv->elem_count;
 }
 //------------------------------------------------------------------------------
 
-void * c_vect_data(c_vector * cv)
+void * c_vect_data(const c_vector * cv)
 {
     return cv->arr;
 }
 //------------------------------------------------------------------------------
 
-int c_vect_length(c_vector * cv)
+int c_vect_length(const c_vector * cv)
 {
     return cv->elem_count;
 }
 
 //------------------------------------------------------------------------------
 
-int c_vect_elem_size(c_vector * cv)
+int c_vect_elem_size(const c_vector * cv)
 {
     return cv->elem_size;
 }
 //------------------------------------------------------------------------------
 
-int c_vect_capacity(c_vector * cv)
+int c_vect_capacity(const c_vector * cv)
 {
     return cv->capacity;
 }

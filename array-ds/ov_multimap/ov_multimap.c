@@ -268,11 +268,11 @@ int ov_mmap_remove_by_val(ov_mmap * mmap, const void * val)
 }
 //------------------------------------------------------------------------------
 
-int ov_mmap_num_of_vals(ov_mmap * mmap, const void * key)
+int ov_mmap_num_of_vals(const ov_mmap * mmap, const void * key)
 {
     int ret = 0;
 
-    c_vector * cv_vals = ov_mmap_get_vals(mmap, key);
+    c_vector * cv_vals = ov_mmap_get_vals((ov_mmap *)mmap, key);
     if (cv_vals)
         ret = c_vect_length(cv_vals);
 
@@ -393,25 +393,25 @@ void * ov_mmap_apply_args(ov_mmap * mmap, mmap_apply_args fun, void * args)
 }
 //------------------------------------------------------------------------------
 
-int ov_mmap_orig_key_size(ov_mmap * mmap)
+int ov_mmap_orig_key_size(const ov_mmap * mmap)
 {
     return mmap->orig_key_size;
 }
 //------------------------------------------------------------------------------
 
-int ov_mmap_real_key_size(ov_mmap * mmap)
+int ov_mmap_real_key_size(const ov_mmap * mmap)
 {
     return mmap->real_key_size;
 }
 //------------------------------------------------------------------------------
 
-int ov_mmap_val_size(ov_mmap * mmap)
+int ov_mmap_val_size(const ov_mmap * mmap)
 {
     return mmap->val_size;
 }
 //------------------------------------------------------------------------------
 
-int ov_mmap_val_capcity(ov_mmap * mmap)
+int ov_mmap_val_capcity(const ov_mmap * mmap)
 {
     return mmap->val_capacity;
 }

@@ -162,13 +162,13 @@ void * f_arr_find_if_ind_from(
 }
 //------------------------------------------------------------------------------
 
-void * f_arr_is_sorted(f_array * far)
+void * f_arr_is_sorted(const f_array * far)
 {
     byte * data = (byte *)far->arr;
     int elem_size = far->elem_size, elem_count = far->elem_count;
     fcomp compar = far->compar;
 
-    void * result = elem_count ? far : NULL;
+    void * result = elem_count ? (f_array *)far : NULL;
 
     for (int i = 1, prev = i - 1; i < elem_count; ++i, ++prev)
     {
@@ -558,38 +558,38 @@ void * f_arr_set_compar(f_array * far, fcomp compar)
 }
 //------------------------------------------------------------------------------
 
-fcomp f_arr_compar(f_array * far)
+fcomp f_arr_compar(const f_array * far)
 {
     return far->compar;
 }
 //------------------------------------------------------------------------------
 
-bool f_arr_is_empty(f_array * far)
+bool f_arr_is_empty(const f_array * far)
 {
     return !far->elem_count;
 }
 //------------------------------------------------------------------------------
 
-void * f_arr_data(f_array * far)
+void * f_arr_data(const f_array * far)
 {
     return far->arr;
 }
 //------------------------------------------------------------------------------
 
-int f_arr_length(f_array * far)
+int f_arr_length(const f_array * far)
 {
     return far->elem_count;
 }
 
 //------------------------------------------------------------------------------
 
-int f_arr_elem_size(f_array * far)
+int f_arr_elem_size(const f_array * far)
 {
     return far->elem_size;
 }
 //------------------------------------------------------------------------------
 
-int f_arr_capacity(f_array * far)
+int f_arr_capacity(const f_array * far)
 {
     return far->capacity;
 }

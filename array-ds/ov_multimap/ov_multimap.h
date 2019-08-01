@@ -1,5 +1,5 @@
 /*  ov_multimap.h -- ordered vector multimap
-    v1.11
+    v1.111
 
     ov_multimap is an ordered vector set of keys. Every key can be associated
     with multiple values. Additional memory is allocated after every key for a
@@ -9,7 +9,7 @@
 
     Author: Vladimir Dinev
     vld.dinev@gmail.com
-    2019-03-02
+    2019-08-01
 */
 
 #ifndef OV_MULTIMAP_H
@@ -148,7 +148,7 @@ Description: Gets the number of keys in mmap.
 Complexity: O(1)
 */
 
-int ov_mmap_num_of_vals(ov_mmap * mmap, const void * key);
+int ov_mmap_num_of_vals(const ov_mmap * mmap, const void * key);
 /*
 Returns: The number of values associated with key.
 
@@ -227,7 +227,7 @@ Complexity: O(n*m) where n is the number of keys and m is the number of values.
 #define ov_mmap_is_empty(mmap)      c_vect_is_empty(&(mmap)->the_map)
 #define ov_mmap_capacity(mmap)      c_vect_capacity(&(mmap)->the_map)
 
-int ov_mmap_orig_key_size(ov_mmap * mmap);
+int ov_mmap_orig_key_size(const ov_mmap * mmap);
 /*
 Returns: The size in bytes of they key type.
 
@@ -237,7 +237,7 @@ used for each key is more than it's sizeof() size.
 Complexity: O(1)
 */
 
-int ov_mmap_real_key_size(ov_mmap * mmap);
+int ov_mmap_real_key_size(const ov_mmap * mmap);
 /*
 Returns: The number of bytes actually used for each key.
 
@@ -248,7 +248,7 @@ therefore sizeof(key_type) + alignment + sizeof(c_vector)
 Complexity: O(1)
 */
 
-int ov_mmap_val_size(ov_mmap * mmap);
+int ov_mmap_val_size(const ov_mmap * mmap);
 /*
 Returns: The size of the value type in bytes.
 
@@ -257,7 +257,7 @@ Description: Retrieves sizeof(val_type)
 Complexity: O(1)
 */
 
-int ov_mmap_val_capcity(ov_mmap * mmap);
+int ov_mmap_val_capcity(const ov_mmap * mmap);
 /*
 Returns: The number of values each key can initially hold before having to grow
 its value vector.

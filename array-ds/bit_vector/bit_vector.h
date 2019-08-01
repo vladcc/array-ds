@@ -1,9 +1,9 @@
 /*  bit_vector.h -- a bit vector
-    v1.1
+    v1.11
 
     Author: Vladimir Dinev
     vld.dinev@gmail.com
-    2019-03-02
+    2019-08-01
 */
 
 #ifndef BIT_VECTOR_H
@@ -60,7 +60,7 @@ Description: Sets all bytes inside bv to val.
 Complexity: O(number of bytes in bv)
 */
 
-void * bit_vect_get(bit_vector * bv, int bit_num, int * out_bit_val);
+void * bit_vect_get(const bit_vector * bv, int bit_num, int * out_bit_val);
 /*
 Returns: bv on success, NULL if bit_num is out of range.
 
@@ -97,7 +97,7 @@ Description: Sets bit bit_num to 1 if it's 0, or to 0 if it's 1
 Complexity: O(1)
 */
 
-int bit_vect_num_of_bits(bit_vector * bv);
+int bit_vect_num_of_bits(const bit_vector * bv);
 /*
 Returns: The number of valid bits in bv.
 

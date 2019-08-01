@@ -1,5 +1,5 @@
 /*  cv_htable.h -- vector chained hash table
-    v1.0
+    v1.1
 
     A hash table chained with c_vectors. Behaves like a set, doubles its
     bucket count once the load factor is reached. All buckets are created with
@@ -7,7 +7,7 @@
 
     Author: Vladimir Dinev
     vld.dinev@gmail.com
-    2019-03-10
+    2019-08-01
 */
 
 #ifndef CV_HTBL_H
@@ -69,7 +69,7 @@ successful, false if not. out_success can be NULL if not used.
 Complexity: O(n) where n is the number of buckets in src.
 */
 
-const void * cv_htbl_lookup(cv_htbl * cvht, const void * key);
+const void * cv_htbl_lookup(const cv_htbl * cvht, const void * key);
 /*
 Returns: A pointer to key inside cvht if found, NULL otherwise.
 
@@ -128,7 +128,7 @@ while ((pdata = cv_htbl_iterate(cvht, it)))
 Complexity: O(n)
 */
 
-bool cv_htbl_is_empty(cv_htbl * cvht);
+bool cv_htbl_is_empty(const cv_htbl * cvht);
 /*
 Returns: true if cvht is empty, false otherwise.
 
@@ -137,7 +137,7 @@ Description: Lets you know if cvht is empty.
 Complexity: O(1)
 */
 
-int cv_htbl_elem_count(cv_htbl * cvht);
+int cv_htbl_elem_count(const cv_htbl * cvht);
 /*
 Returns: The number of elements inside cvht.
 
@@ -146,7 +146,7 @@ Description: Gets the number of elements inside cvht.
 Complexity: O(1)
 */
 
-int cv_htbl_elem_max(cv_htbl * cvht);
+int cv_htbl_elem_max(const cv_htbl * cvht);
 /*
 Returns: The maximum number of elements cvht can have before it has to grow.
 

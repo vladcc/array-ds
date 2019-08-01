@@ -1,5 +1,5 @@
 #include <string.h>
-#include "cv_htable.h"
+#include "cv_htable.hpp"
 #include "cvh_default_hash.c"
 //------------------------------------------------------------------------------
 
@@ -121,7 +121,9 @@ static const void * actually_find(
 {
     c_vector * the_tbl = &(cvht->the_tbl);
 
-    unsigned int hash = cvht->hash_fun((unsigned char *)key, cvht->elem_size);
+    unsigned int hash = cvht->hash_fun(
+        (const unsigned char *)key, cvht->elem_size
+        );
     int index;
     void * found = c_vect_find_ind(
         (c_vector *)c_vect_get(the_tbl, hash%c_vect_length(the_tbl)),
@@ -134,11 +136,11 @@ static const void * actually_find(
 }
 //------------------------------------------------------------------------------
 
-const void * cv_htbl_lookup(cv_htbl * cvht, const void * key)
+const void * cv_htbl_lookup(const cv_htbl * cvht, const void * key)
 {
     int out_index;
     unsigned int out_hash;
-    return actually_find(cvht, key, &out_index, &out_hash);
+    return actually_find((cv_htbl *)cvht, key, &out_index, &out_hash);
 }
 //------------------------------------------------------------------------------
 
@@ -162,7 +164,7 @@ static cv_htbl stop_world_n_rehash(cv_htbl * old_cvht, bool * success)
         for (int i = 0; i < old_cap; ++i)
         {
             if ((bucket = (c_vector *)c_vect_get(old_tbl, i)) &&
-                !c_vect_is_empty(bucket))
+                    !c_vect_is_empty(bucket))
             {
                 int bucket_len = c_vect_length(bucket);
                 for (int i = 0; i < bucket_len; ++i)
@@ -274,19 +276,19 @@ const void * cv_htbl_iterate_(cv_htbl * cvht,
 }
 //------------------------------------------------------------------------------
 
-bool cv_htbl_is_empty(cv_htbl * cvht)
+bool cv_htbl_is_empty(const cv_htbl * cvht)
 {
     return !cvht->elem_inside;
 }
 //------------------------------------------------------------------------------
 
-int cv_htbl_elem_count(cv_htbl * cvht)
+int cv_htbl_elem_count(const cv_htbl * cvht)
 {
     return cvht->elem_inside;
 }
 //------------------------------------------------------------------------------
 
-int cv_htbl_elem_max(cv_htbl * cvht)
+int cv_htbl_elem_max(const cv_htbl * cvht)
 {
     return cvht->elem_max;
 }

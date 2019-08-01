@@ -1,6 +1,6 @@
 #include <math.h>
 #include <string.h>
-#include "oa_htable.h"
+#include "oa_htable.hpp"
 #include "oah_default_hash.c"
 //------------------------------------------------------------------------------
 
@@ -137,10 +137,11 @@ static const void * actually_find(
 
     c_vector * the_tbl = &(oaht->the_tbl);
     bit_vector * is_taken = &(oaht->is_taken);
-    unsigned int vhash =
-        oaht->hash_fun((unsigned char *)key, c_vect_elem_size(the_tbl));
+    unsigned int hash = oaht->hash_fun(
+        (const unsigned char *)key, c_vect_elem_size(the_tbl)
+        );
     int cap = c_vect_length(the_tbl);
-    int ins_point = vhash % cap;
+    int ins_point = hash % cap;
 
     void * data = NULL;
     int i, bit_val = 0, found_index = -1, btake, bvacn;
@@ -155,7 +156,7 @@ static const void * actually_find(
     }
 
     *out_index = found_index;
-    *key_hash = vhash;
+    *key_hash = hash;
     return ret;
 }
 //------------------------------------------------------------------------------
@@ -214,11 +215,11 @@ const void * oa_htbl_insert(oa_htbl * oaht, const void * key)
 }
 //------------------------------------------------------------------------------
 
-const void * oa_htbl_lookup(oa_htbl * oaht, const void * key)
+const void * oa_htbl_lookup(const oa_htbl * oaht, const void * key)
 {
     int found_index;
     unsigned int key_hash;
-    return actually_find(oaht, key, &found_index, &key_hash);
+    return actually_find((oa_htbl *)oaht, key, &found_index, &key_hash);
 }
 //------------------------------------------------------------------------------
 
@@ -275,19 +276,19 @@ const void * oa_htbl_iterate_(oa_htbl * oaht, int start, int * out_so_far)
 }
 //------------------------------------------------------------------------------
 
-bool oa_htbl_is_empty(oa_htbl * oaht)
+bool oa_htbl_is_empty(const oa_htbl * oaht)
 {
     return !oaht->elem_inside;
 }
 //------------------------------------------------------------------------------
 
-int oa_htbl_elem_count(oa_htbl * oaht)
+int oa_htbl_elem_count(const oa_htbl * oaht)
 {
     return oaht->elem_inside;
 }
 //------------------------------------------------------------------------------
 
-int oa_htbl_elem_max(oa_htbl * oaht)
+int oa_htbl_elem_max(const oa_htbl * oaht)
 {
     return oaht->elem_max;
 }
