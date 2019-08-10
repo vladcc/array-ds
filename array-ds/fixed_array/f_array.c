@@ -6,8 +6,6 @@ typedef unsigned char byte;
 
 void * f_arr_make(f_array * far, int elem_size, fcomp compar, int capacity)
 {
-    void * array = NULL;
-
     if (elem_size > 0 && capacity > 0)
     {
         far->elem_size = elem_size;
@@ -16,12 +14,12 @@ void * f_arr_make(f_array * far, int elem_size, fcomp compar, int capacity)
         far->compar = compar;
 
         if ((far->arr = malloc(elem_size * capacity)))
-            array = far;
-        else
-            memset(far, 0, sizeof(*far));
+            return far;
+
     }
 
-    return array;
+    memset(far, 0, sizeof(*far));
+    return NULL;
 }
 //------------------------------------------------------------------------------
 

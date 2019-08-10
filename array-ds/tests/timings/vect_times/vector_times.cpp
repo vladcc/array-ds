@@ -111,15 +111,7 @@ static int compar_int(const void * k1, const void * k2)
 {
     int i1 = *((int *)k1);
     int i2 = *((int *)k2);
-
-    int result = 0;
-
-    if (i1 > i2)
-        result = 1;
-    else if (i1 < i2)
-        result = -1;
-
-    return result;
+    return (i1 > i2) - (i1 < i2);
 }
 
 static void vector_ints(void)
@@ -232,21 +224,13 @@ static void vector_ints(void)
 typedef struct arrst {
     double d;
     int i;
-} arrts;
+} arrst;
 
 static int compar_arrst(const void * k1, const void * k2)
 {
-    int i1 = ((arrts *)k1)->i;
-    int i2 = ((arrts *)k2)->i;
-
-    int result = 0;
-
-    if (i1 > i2)
-        result = 1;
-    else if (i1 < i2)
-        result = -1;
-
-    return result;
+    int i1 = ((arrst *)k1)->i;
+    int i2 = ((arrst *)k2)->i;
+    return (i1 > i2) - (i1 < i2);
 }
 
 typedef struct arrst2 {
@@ -258,15 +242,7 @@ static int compar_arrst2(const void * k1, const void * k2)
 {
     int i1 = ((arrst2 *)k1)->i;
     int i2 = ((arrst2 *)k2)->i;
-
-    int result = 0;
-
-    if (i1 > i2)
-        result = 1;
-    else if (i1 < i2)
-        result = -1;
-
-    return result;
+    return (i1 > i2) - (i1 < i2);
 }
 
 static void vector_structs(void)
@@ -281,17 +257,17 @@ static void vector_structs(void)
     {
         struct less_than_key
         {
-            inline bool operator() (const arrts& key1, const arrts& key2)
+            inline bool operator() (const arrst& key1, const arrst& key2)
             {
                 return (key1.i < key2.i);
             }
         };
 
-        arrts proto = {8.5D, 0};
-        vector<arrts> vint;
+        arrst proto = {8.5D, 0};
+        vector<arrst> vint;
 
         c_vector cv_, * cv = &cv_;
-        c_vect_make_cap(cv, sizeof(arrts), compar_arrst, 1);
+        c_vect_make_cap(cv, sizeof(arrst), compar_arrst, 1);
 
         printf("\n### vectors with struct {double, int} ###\n");
         printf("\nPushing random %d\n", kMil);
@@ -311,14 +287,14 @@ static void vector_structs(void)
         printf("c   vect: %f sec\n", time);
 
         for (int i = 0; i < kMil; ++i)
-            check(vint[i].i == (((arrts *)c_vect_get(cv, i))->i), "Arrays differ");
+            check(vint[i].i == (((arrst *)c_vect_get(cv, i))->i), "Arrays differ");
 
         printf("\nTraversing\n");
-        arrts a_;
+        arrst a_;
         int n = 0;
         double d = 0.0D;
 
-        arrts * data = (arrts *)c_vect_data(cv);
+        arrst * data = (arrst *)c_vect_data(cv);
         start = clock();
         for(int i = 0; i < kMil; ++i)
         {
@@ -344,7 +320,7 @@ static void vector_structs(void)
         start = clock();
         for(int i = 0; i < kMil; ++i)
         {
-            a_ = *(arrts *)c_vect_get(cv, i);
+            a_ = *(arrst *)c_vect_get(cv, i);
             d += a_.d;
             n += a_.i;
         }
@@ -383,7 +359,7 @@ static void vector_structs(void)
             "Arrays of different sizes");
 
         for (int i = 0; i < kMil; ++i)
-            check(vint[i].i == (((arrts *)c_vect_get(cv, i))->i), "Arrays differ");
+            check(vint[i].i == (((arrst *)c_vect_get(cv, i))->i), "Arrays differ");
 
         const int kRmv = 1000;
         printf("\nRemoving first %d elements\n", kRmv);

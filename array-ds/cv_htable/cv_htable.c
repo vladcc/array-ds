@@ -248,7 +248,7 @@ const void * cv_htbl_iterate_(cv_htbl * cvht,
     int tbl_len = c_vect_length(the_tbl);
 
     cv_htbl_iterator it = start;
-    if ((unsigned int)it.row < tbl_len)
+    if ((unsigned int)it.row < (unsigned int)tbl_len)
     {
         int bucket_len;
         c_vector * bucket;
@@ -256,7 +256,7 @@ const void * cv_htbl_iterate_(cv_htbl * cvht,
         {
             bucket = c_vect_get(the_tbl, i);
             bucket_len = c_vect_length(bucket);
-            if ((unsigned int)it.col < bucket_len)
+            if ((unsigned int)it.col < (unsigned int)bucket_len)
             {
                 ret = c_vect_get(bucket, it.col);
                 out_so_far->row = i;

@@ -13,8 +13,6 @@ void * ov_mset_make_cap(
     ov_mset * mset, int elem_size, fcomp compar, int capacity
 )
 {
-    void * ret = NULL;
-
     if (elem_size > 0 && capacity > 0)
     {
         mset->orig_elem_size = elem_size;
@@ -26,12 +24,12 @@ void * ov_mset_make_cap(
                     the_vect,
                     elem_size+align+sizeof(counter_type), compar, capacity
                 ))
-            ret = mset;
-        else
-            memset(mset, 0, sizeof(*mset));
+            return mset;
+
     }
 
-    return ret;
+    memset(mset, 0, sizeof(*mset));
+    return NULL;
 }
 //------------------------------------------------------------------------------
 

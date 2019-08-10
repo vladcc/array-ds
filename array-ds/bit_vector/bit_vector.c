@@ -73,7 +73,7 @@ void * bit_vect_get(const bit_vector * bv, int bit_num, int * out_bit_val)
     int all_bits = bv->bits_count;
     byte * the_bits = bv->the_bits;
 
-    if ((unsigned int)bit_num < all_bits)
+    if ((unsigned int)bit_num < (unsigned int)all_bits)
     {
         int target = bit_num % CHAR_BIT;
         *out_bit_val = (the_bits[bit_num/CHAR_BIT] & (1 << target)) >> target;
@@ -90,7 +90,7 @@ void * bit_vect_set(bit_vector * bv, int bit_num)
     int all_bits = bv->bits_count;
     byte * the_bits = bv->the_bits;
 
-    if ((unsigned int)bit_num < all_bits)
+    if ((unsigned int)bit_num < (unsigned int)all_bits)
     {
         the_bits[bit_num/CHAR_BIT] |= (1 << (bit_num % CHAR_BIT));
         ret = bv;
@@ -106,7 +106,7 @@ void * bit_vect_clear(bit_vector * bv, int bit_num)
     int all_bits = bv->bits_count;
     byte * the_bits = bv->the_bits;
 
-    if ((unsigned int)bit_num < all_bits)
+    if ((unsigned int)bit_num < (unsigned int)all_bits)
     {
         the_bits[bit_num/CHAR_BIT] &= ~(1 << (bit_num % CHAR_BIT));
         ret = bv;
@@ -122,7 +122,7 @@ void * bit_vect_toggle(bit_vector * bv, int bit_num)
     int all_bits = bv->bits_count;
     byte * the_bits = bv->the_bits;
 
-    if ((unsigned int)bit_num < all_bits)
+    if ((unsigned int)bit_num < (unsigned int)all_bits)
     {
         the_bits[bit_num/CHAR_BIT] ^= (0x01 << (bit_num % CHAR_BIT));
         ret = bv;

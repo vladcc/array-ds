@@ -82,73 +82,74 @@ static bool test_make_destroy(void)
 
     int key_sz = MAX_STR, start_cap = 2;
 
-    memcmp(&zout, mmap, sizeof(ov_mmap) != 0);
+    check(memcmp(&zout, mmap, sizeof(ov_mmap)) != 0);
     check(!ov_mmap_make_cap(mmap,
         key_sz, compar_key, 0,
         sizeof(test_val), compar_val, start_cap));
-    memcmp(&zout, mmap, sizeof(ov_mmap) == 0);
+    check(memcmp(&zout, mmap, sizeof(ov_mmap)) == 0);
 
     memset(mmap, 0xFF, sizeof(ov_mmap));
-    memcmp(&zout, mmap, sizeof(ov_mmap) != 0);
+    check(memcmp(&zout, mmap, sizeof(ov_mmap)) != 0);
     check(!ov_mmap_make_cap(mmap,
         0, compar_key, 33,
         sizeof(test_val), compar_val, start_cap));
-    memcmp(&zout, mmap, sizeof(ov_mmap) == 0);
+    check(memcmp(&zout, mmap, sizeof(ov_mmap)) == 0);
 
     memset(mmap, 0xFF, sizeof(ov_mmap));
-    memcmp(&zout, mmap, sizeof(ov_mmap) != 0);
+    check(memcmp(&zout, mmap, sizeof(ov_mmap)) != 0);
     check(!ov_mmap_make_cap(mmap,
         0, compar_key, 33,
         sizeof(test_val), compar_val, start_cap));
-    memcmp(&zout, mmap, sizeof(ov_mmap) == 0);
+    check(memcmp(&zout, mmap, sizeof(ov_mmap)) == 0);
 
     memset(mmap, 0xFF, sizeof(ov_mmap));
-    memcmp(&zout, mmap, sizeof(ov_mmap) != 0);
+    check(memcmp(&zout, mmap, sizeof(ov_mmap)) != 0);
     check(!ov_mmap_make_cap(mmap,
         key_sz, compar_key, 33,
         sizeof(test_val), compar_val, 0));
-    memcmp(&zout, mmap, sizeof(ov_mmap) == 0);
+    check(memcmp(&zout, mmap, sizeof(ov_mmap)) == 0);
 
     memset(mmap, 0xFF, sizeof(ov_mmap));
-    memcmp(&zout, mmap, sizeof(ov_mmap) != 0);
+    check(memcmp(&zout, mmap, sizeof(ov_mmap)) != 0);
     check(!ov_mmap_make_cap(mmap,
         key_sz, compar_key, 33,
         0, compar_val, start_cap));
-    memcmp(&zout, mmap, sizeof(ov_mmap) == 0);
+    check(memcmp(&zout, mmap, sizeof(ov_mmap)) == 0);
 
-        memcmp(&zout, mmap, sizeof(ov_mmap) != 0);
+    memset(mmap, 0xFF, sizeof(ov_mmap));
+    check(memcmp(&zout, mmap, sizeof(ov_mmap)) != 0);
     check(!ov_mmap_make_cap(mmap,
         key_sz, compar_key, -123,
         sizeof(test_val), compar_val, start_cap));
-    memcmp(&zout, mmap, sizeof(ov_mmap) == 0);
+    check(memcmp(&zout, mmap, sizeof(ov_mmap)) == 0);
 
     memset(mmap, 0xFF, sizeof(ov_mmap));
-    memcmp(&zout, mmap, sizeof(ov_mmap) != 0);
+    check(memcmp(&zout, mmap, sizeof(ov_mmap)) != 0);
     check(!ov_mmap_make_cap(mmap,
         -123, compar_key, 33,
         sizeof(test_val), compar_val, start_cap));
-    memcmp(&zout, mmap, sizeof(ov_mmap) == 0);
+    check(memcmp(&zout, mmap, sizeof(ov_mmap)) == 0);
 
     memset(mmap, 0xFF, sizeof(ov_mmap));
-    memcmp(&zout, mmap, sizeof(ov_mmap) != 0);
+    check(memcmp(&zout, mmap, sizeof(ov_mmap)) != 0);
     check(!ov_mmap_make_cap(mmap,
         -123, compar_key, 33,
         sizeof(test_val), compar_val, start_cap));
-    memcmp(&zout, mmap, sizeof(ov_mmap) == 0);
+    check(memcmp(&zout, mmap, sizeof(ov_mmap)) == 0);
 
     memset(mmap, 0xFF, sizeof(ov_mmap));
-    memcmp(&zout, mmap, sizeof(ov_mmap) != 0);
+    check(memcmp(&zout, mmap, sizeof(ov_mmap)) != 0);
     check(!ov_mmap_make_cap(mmap,
         key_sz, compar_key, 33,
         sizeof(test_val), compar_val, -123));
-    memcmp(&zout, mmap, sizeof(ov_mmap) == 0);
+    check(memcmp(&zout, mmap, sizeof(ov_mmap)) == 0);
 
     memset(mmap, 0xFF, sizeof(ov_mmap));
-    memcmp(&zout, mmap, sizeof(ov_mmap) != 0);
+    check(memcmp(&zout, mmap, sizeof(ov_mmap)) != 0);
     check(!ov_mmap_make_cap(mmap,
         key_sz, compar_key, 33,
         -123, compar_val, start_cap));
-    memcmp(&zout, mmap, sizeof(ov_mmap) == 0);
+    check(memcmp(&zout, mmap, sizeof(ov_mmap)) == 0);
 
     check(ov_mmap_make_cap(mmap,
         key_sz, compar_key, 33,
@@ -172,9 +173,9 @@ static bool test_make_destroy(void)
     check(the_map->compar == compar_key);
     check(the_map->capacity == 33);
 
-    memcmp(&zout, mmap, sizeof(ov_mmap) != 0);
+    check(memcmp(&zout, mmap, sizeof(ov_mmap)) != 0);
     ov_mmap_destroy(mmap);
-    memcmp(&zout, mmap, sizeof(ov_mmap) == 0);
+    check(memcmp(&zout, mmap, sizeof(ov_mmap)) == 0);
     return true;
 }
 

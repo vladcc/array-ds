@@ -13,14 +13,7 @@ static int compar(const void * one, const void * two)
 {
     int a = *((int *)one);
     int b = *((int *)two);
-
-    int comp = 0;
-    if (a > b)
-        comp = 1;
-    else if (a < b)
-        comp = -1;
-
-    return comp;
+    return (a > b) - (a < b);
 }
 //------------------------------------------------------------------------------
 

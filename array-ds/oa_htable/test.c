@@ -29,16 +29,9 @@ static ftest tests[] = {
 
 static int compar(const void * k1, const void * k2)
 {
-    int i1 = *(int *)k1;
-    int i2 = *(int *)k2;
-
-    int result = 0;
-    if (i1 > i2)
-        result = 1;
-    else if (i1 < i2)
-        result = -1;
-
-    return result;
+    int i1 = *((int *)k1);
+    int i2 = *((int *)k2);
+    return (i1 > i2) - (i1 < i2);
 }
 //------------------------------------------------------------------------------
 

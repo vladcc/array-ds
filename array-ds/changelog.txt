@@ -52,3 +52,10 @@ f_arr_compar()
 
 cpp code updated in sync
 cpp headers renamed to hpp
+
+2019-08-10
+memcmp() checks fixed in c_vector, f_array, ov_mmap, and ov_mset
+Bugfix: container structs for the above are now zeroed on creation failure
+All compar functions for ints update to branchless
+Fix: both values cast to unsigned int in bit_vector, cv_htbl, oa_htbl range checks and in jenkins hash
+.cpps updated as well

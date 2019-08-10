@@ -80,16 +80,9 @@ typedef unsigned char byte;
 
 static int compar(const void * k1, const void * k2)
 {
-    int i1 = *(int *)k1;
-    int i2 = *(int *)k2;
-
-    int result = 0;
-    if (i1 > i2)
-        result = 1;
-    else if (i1 < i2)
-        result = -1;
-
-    return result;
+    int i1 = *((int *)k1);
+    int i2 = *((int *)k2);
+    return (i1 > i2) - (i1 < i2);
 }
 
 static int equal(const void * k1, const void * k2)
@@ -1467,29 +1460,29 @@ static bool test_make_cap_vect(void)
     memset(&zout, 0, sizeof(c_vector));
 
     memset(vect, 0xFF, sizeof(c_vector));
-    memcmp(&zout, vect, sizeof(c_vector) != 0);
+    check(memcmp(&zout, vect, sizeof(c_vector)) != 0);
     check(!c_vect_make_cap(vect, 5, NULL, 0));
-    memcmp(&zout, vect, sizeof(c_vector) == 0);
+    check(memcmp(&zout, vect, sizeof(c_vector)) == 0);
 
     memset(vect, 0xFF, sizeof(c_vector));
-    memcmp(&zout, vect, sizeof(c_vector) != 0);
+    check(memcmp(&zout, vect, sizeof(c_vector)) != 0);
     check(!c_vect_make_cap(vect, -1, NULL, 5));
-    memcmp(&zout, vect, sizeof(c_vector) == 0);
+    check(memcmp(&zout, vect, sizeof(c_vector)) == 0);
 
     memset(vect, 0xFF, sizeof(c_vector));
-    memcmp(&zout, vect, sizeof(c_vector) != 0);
+    check(memcmp(&zout, vect, sizeof(c_vector)) != 0);
     check(!c_vect_make_cap(vect, 5, NULL, -1));
-    memcmp(&zout, vect, sizeof(c_vector) == 0);
+    check(memcmp(&zout, vect, sizeof(c_vector)) == 0);
 
     memset(vect, 0xFF, sizeof(c_vector));
-    memcmp(&zout, vect, sizeof(c_vector) != 0);
+    check(memcmp(&zout, vect, sizeof(c_vector)) != 0);
     check(!c_vect_make_cap(vect, -23, NULL, 5));
-    memcmp(&zout, vect, sizeof(c_vector) == 0);
+    check(memcmp(&zout, vect, sizeof(c_vector)) == 0);
 
     memset(vect, 0xFF, sizeof(c_vector));
-    memcmp(&zout, vect, sizeof(c_vector) != 0);
+    check(memcmp(&zout, vect, sizeof(c_vector)) != 0);
     check(!c_vect_make_cap(vect, 0, NULL, 5));
-    memcmp(&zout, vect, sizeof(c_vector) == 0);
+    check(memcmp(&zout, vect, sizeof(c_vector)) == 0);
 
     int elem_size = sizeof(double);
     const int capacity = 5;
@@ -1519,9 +1512,9 @@ static bool test_destroy_vect(void)
     check(c_vect_capacity(vect) == capacity);
     check(c_vect_length(vect) == 0);
 
-    memcmp(&zout, vect, sizeof(c_vector) != 0);
+    check(memcmp(&zout, vect, sizeof(c_vector)) != 0);
     c_vect_destroy(vect);
-    memcmp(&zout, vect, sizeof(c_vector) == 0);
+    check(memcmp(&zout, vect, sizeof(c_vector)) == 0);
 
     check(vect->capacity == 0);
     check(vect->elem_count == 0);

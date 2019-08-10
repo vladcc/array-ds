@@ -15,8 +15,6 @@ void * ov_mmap_make_cap(
     int val_size, fcomp val_compar, int val_capacity
 )
 {
-    void * ret = NULL;
-
     if (key_size > 0 && val_size > 0 && val_capacity > 0)
     {
         int extra_bytes = key_size % sizeof(pointer);
@@ -32,12 +30,11 @@ void * ov_mmap_make_cap(
         if (ov_set_make_cap(
                 &(mmap->the_map), real_key_size, key_compar, key_capacity
             ))
-            ret = mmap;
-        else
-            memset(mmap, 0, sizeof(*mmap));
+            return mmap;
     }
 
-    return ret;
+    memset(mmap, 0, sizeof(*mmap));
+    return NULL;
 }
 //------------------------------------------------------------------------------
 

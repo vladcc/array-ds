@@ -6,9 +6,9 @@
 
 int main(void)
 {
-    ///*
+    //*
     vector_times();
-    ///*/
+    //*/
 
     /*
     int times[] = {

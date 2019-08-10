@@ -76,16 +76,9 @@ typedef unsigned char byte;
 
 static int compar(const void * k1, const void * k2)
 {
-    int i1 = *(int *)k1;
-    int i2 = *(int *)k2;
-
-    int result = 0;
-    if (i1 > i2)
-        result = 1;
-    else if (i1 < i2)
-        result = -1;
-
-    return result;
+    int i1 = *((int *)k1);
+    int i2 = *((int *)k2);
+    return (i1 > i2) - (i1 < i2);
 }
 
 static int equal(const void * k1, const void * k2)
@@ -646,7 +639,7 @@ static bool test_copy(void)
 
     memset(vno, 0, sizeof(*vno));
     vtry_ = f_arr_copy(vect, &success);
-    check(memcmp(&vtry_, vno, sizeof(f_array )) == 0);
+    check(memcmp(&vtry_, vno, sizeof(f_array)) == 0);
     check(!success);
 
     success = false;
@@ -1409,32 +1402,32 @@ static bool test_make_cap_vect(void)
 {
     f_array  vect_, * vect = &vect_;
     f_array  zout;
-    memset(&zout, 0, sizeof(f_array ));
+    memset(&zout, 0, sizeof(f_array));
 
-    memset(vect, 0xFF, sizeof(f_array ));
-    memcmp(&zout, vect, sizeof(f_array ) != 0);
+    memset(vect, 0xFF, sizeof(f_array));
+    check(memcmp(&zout, vect, sizeof(f_array)) != 0);
     check(!f_arr_make(vect, 5, NULL, 0));
-    memcmp(&zout, vect, sizeof(f_array ) == 0);
+    check(memcmp(&zout, vect, sizeof(f_array)) == 0);
 
-    memset(vect, 0xFF, sizeof(f_array ));
-    memcmp(&zout, vect, sizeof(f_array ) != 0);
+    memset(vect, 0xFF, sizeof(f_array));
+    check(memcmp(&zout, vect, sizeof(f_array)) != 0);
     check(!f_arr_make(vect, -1, NULL, 5));
-    memcmp(&zout, vect, sizeof(f_array ) == 0);
+    check(memcmp(&zout, vect, sizeof(f_array)) == 0);
 
-    memset(vect, 0xFF, sizeof(f_array ));
-    memcmp(&zout, vect, sizeof(f_array ) != 0);
+    memset(vect, 0xFF, sizeof(f_array));
+    check(memcmp(&zout, vect, sizeof(f_array)) != 0);
     check(!f_arr_make(vect, 5, NULL, -1));
-    memcmp(&zout, vect, sizeof(f_array ) == 0);
+    check(memcmp(&zout, vect, sizeof(f_array)) == 0);
 
-    memset(vect, 0xFF, sizeof(f_array ));
-    memcmp(&zout, vect, sizeof(f_array ) != 0);
+    memset(vect, 0xFF, sizeof(f_array));
+    check(memcmp(&zout, vect, sizeof(f_array)) != 0);
     check(!f_arr_make(vect, -23, NULL, 5));
-    memcmp(&zout, vect, sizeof(f_array ) == 0);
+    check(memcmp(&zout, vect, sizeof(f_array)) == 0);
 
-    memset(vect, 0xFF, sizeof(f_array ));
-    memcmp(&zout, vect, sizeof(f_array ) != 0);
+    memset(vect, 0xFF, sizeof(f_array));
+    check(memcmp(&zout, vect, sizeof(f_array)) != 0);
     check(!f_arr_make(vect, 0, NULL, 5));
-    memcmp(&zout, vect, sizeof(f_array ) == 0);
+    check(memcmp(&zout, vect, sizeof(f_array)) == 0);
 
     int elem_size = sizeof(double);
     const int capacity = 5;
@@ -1456,7 +1449,7 @@ static bool test_destroy_vect(void)
     const int capacity = 5;
     f_array  vect_, * vect = &vect_;
     f_array  zout;
-    memset(&zout, 0, sizeof(f_array ));
+    memset(&zout, 0, sizeof(f_array));
 
     check(f_arr_make(vect, elem_size, NULL, capacity) == vect);
     check(vect->arr);
@@ -1464,9 +1457,9 @@ static bool test_destroy_vect(void)
     check(f_arr_capacity(vect) == capacity);
     check(f_arr_length(vect) == 0);
 
-    memcmp(&zout, vect, sizeof(f_array ) != 0);
+    check(memcmp(&zout, vect, sizeof(f_array)) != 0);
     f_arr_destroy(vect);
-    memcmp(&zout, vect, sizeof(f_array ) == 0);
+    check(memcmp(&zout, vect, sizeof(f_array)) == 0);
 
     check(vect->capacity == 0);
     check(vect->elem_count == 0);

@@ -8,10 +8,6 @@ void * oa_htbl_make_cap_hash(
     oa_htbl * oaht, int elem_size, fcomp compar, int capacity, fhash hash
     )
 {
-    memset(oaht, 0, sizeof(*oaht));
-
-    void * ret = NULL;
-
     if (elem_size > 0 && capacity > 0)
     {
         c_vector * the_tbl = &(oaht->the_tbl);
@@ -26,14 +22,15 @@ void * oa_htbl_make_cap_hash(
                 oaht->hash_fun = hash ? hash : OAH_DEFAULT_HASH;
                 oaht->elem_inside = 0;
                 oaht->elem_max = capacity;
-                ret = oaht;
+                return oaht;
             }
             else
                 c_vect_destroy(the_tbl);
         }
     }
 
-    return ret;
+    memset(oaht, 0, sizeof(*oaht));
+    return NULL;
 }
 //------------------------------------------------------------------------------
 
@@ -258,7 +255,7 @@ const void * oa_htbl_iterate_(oa_htbl * oaht, int start, int * out_so_far)
     bit_vector * is_taken = &(oaht->is_taken);
     int cap = c_vect_capacity(the_tbl);
 
-    if ((unsigned int)start < cap)
+    if ((unsigned int)start < (unsigned int)cap)
     {
         int bit_val = 0;
         for (int i = start; i < cap; ++i)

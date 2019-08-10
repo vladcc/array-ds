@@ -72,16 +72,9 @@ static bool test_mem_align(void)
 
 static int compar_ints(const void * one, const void * two)
 {
-    int a = *((int *)one);
-    int b = *((int *)two);
-
-    int comp = 0;
-    if (a > b)
-        comp = 1;
-    else if (a < b)
-        comp = -1;
-
-    return comp;
+    int i1 = *((int *)one);
+    int i2 = *((int *)two);
+    return (i1 > i2) - (i1 < i2);
 }
 
 typedef short first_test;
@@ -89,9 +82,7 @@ static int compar_ft(const void * one, const void * two)
 {
     first_test a = *((first_test *)one);
     first_test b = *((first_test *)two);
-    if (a > b) return 1;
-    if (a < b) return -1;
-    return 0;
+    return (a > b) - (a < b);
 }
 
 //------------------------------------------------------------------------------
@@ -120,24 +111,24 @@ static bool test_ov_mset(void)
     ov_mset zout;
     memset(&zout, 0, sizeof(ov_mset));
 
-    memcmp(&zout, mset, sizeof(ov_mset) != 0);
+    check(memcmp(&zout, mset, sizeof(ov_mset)) != 0);
     check(!ov_mset_make_cap(mset, sizeof(first_test), compar_ft, -2));
-    memcmp(&zout, mset, sizeof(ov_mset) == 0);
+    check(memcmp(&zout, mset, sizeof(ov_mset)) == 0);
 
     memset(mset, 0xFF, sizeof(*mset));
-    memcmp(&zout, mset, sizeof(ov_mset) != 0);
+    check(memcmp(&zout, mset, sizeof(ov_mset)) != 0);
     check(!ov_mset_make_cap(mset, sizeof(first_test), compar_ft, 0));
-    memcmp(&zout, mset, sizeof(ov_mset) == 0);
+    check(memcmp(&zout, mset, sizeof(ov_mset)) == 0);
 
     memset(mset, 0xFF, sizeof(*mset));
-    memcmp(&zout, mset, sizeof(ov_mset) != 0);
+    check(memcmp(&zout, mset, sizeof(ov_mset)) != 0);
     check(!ov_mset_make(mset, 0, compar_ft));
-    memcmp(&zout, mset, sizeof(ov_mset) == 0);
+    check(memcmp(&zout, mset, sizeof(ov_mset)) == 0);
 
     memset(mset, 0xFF, sizeof(*mset));
-    memcmp(&zout, mset, sizeof(ov_mset) != 0);
+    check(memcmp(&zout, mset, sizeof(ov_mset)) != 0);
     check(!ov_mset_make(mset, -213, compar_ft));
-    memcmp(&zout, mset, sizeof(ov_mset) == 0);
+    check(memcmp(&zout, mset, sizeof(ov_mset)) == 0);
 
     ov_mset_make(mset, sizeof(first_test), compar_ft);
     int elem_size = ov_mset_real_elem_size(mset);
@@ -345,13 +336,13 @@ static bool test_ov_mset(void)
     check(count == ov_mset_length(mset));
 
     ov_mset cpy2 = ov_mset_copy(mset, NULL);
-    memcmp(&zout, &cpy2, sizeof(ov_mset) != 0);
+    check(memcmp(&zout, &cpy2, sizeof(ov_mset)) != 0);
     ov_mset_destroy(&cpy2);
-    memcmp(&zout, &cpy2, sizeof(ov_mset) == 0);
+    check(memcmp(&zout, &cpy2, sizeof(ov_mset)) == 0);
 
-    memcmp(&zout, mset, sizeof(ov_mset) != 0);
+    check(memcmp(&zout, mset, sizeof(ov_mset)) != 0);
     ov_mset_destroy(mset);
-    memcmp(&zout, mset, sizeof(ov_mset) == 0);
+    check(memcmp(&zout, mset, sizeof(ov_mset)) == 0);
     return true;
 }
 //------------------------------------------------------------------------------
