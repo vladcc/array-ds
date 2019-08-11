@@ -1,5 +1,5 @@
 /*  ov_set.h -- ordered vector set
-    v1.0
+    v1.01
 
     The ov_set is a c_vector which keeps itself sorted and uses binary search
     for lookup. The main difference between this and ov_map is that ov_set
@@ -62,8 +62,7 @@ Complexity: O(n)
 
 const void * ov_set_insert(ov_set * set, const void * what);
 /*
-Returns: A pointer to the elements inserted in the set, NULL if the element
-is already in the set.
+Returns: A pointer to the element inside the set.
 
 Description: Does a binary search for what and inserts it if not found.
 

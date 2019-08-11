@@ -41,7 +41,7 @@ static bool test_ov_set(void)
 
     for (int i = 0; i < add; ++i)
     {
-        check(!ov_set_insert(set, &i));
+        check(ov_set_insert(set, &i));
         check(ov_set_has(set, &i));
         check(*(out = ov_set_get(set, i)) == i);
     }
@@ -81,7 +81,7 @@ static bool test_ov_set(void)
     for (int i = 100; i > 0; --i)
     {
         check(*(out = ov_set_insert(set, &i)) == i);
-        check(!ov_set_insert(set, &i));
+        check(ov_set_insert(set, &i));
         check(*(out = ov_set_has(set, &i)) == i);
     }
     check(ov_set_length(set) == add);

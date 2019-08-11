@@ -3,8 +3,12 @@
 
 const void * ov_set_insert(ov_set * set, const void * what)
 {
-    return (c_vect_bsearch(set, what)) ? NULL :
-        c_vect_insert_online(set, what);
+    void * ret = c_vect_bsearch(set, what);
+
+    if (!ret)
+        ret = c_vect_insert_online(set, what);
+
+    return ret;
 }
 //------------------------------------------------------------------------------
 

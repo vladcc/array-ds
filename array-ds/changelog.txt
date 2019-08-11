@@ -57,5 +57,9 @@ cpp headers renamed to hpp
 memcmp() checks fixed in c_vector, f_array, ov_mmap, and ov_mset
 Bugfix: container structs for the above are now zeroed on creation failure
 All compar functions for ints update to branchless
-Fix: both values cast to unsigned int in bit_vector, cv_htbl, oa_htbl range checks and in jenkins hash
-.cpps updated as well
+Fix: both values cast to unsigned int in bit_vector, cv_htbl, oa_htbl range 
+checks and in jenkins hash .cpps updated as well
+
+2019-08-11
+ov_set_insert() now always returns a pointer to the element, rather than NULL
+if the element is already in the set.
