@@ -63,3 +63,4 @@ checks and in jenkins hash .cpps updated as well
 2019-08-11
 ov_set_insert() now always returns a pointer to the element, rather than NULL
 if the element is already in the set.
+trie added
