@@ -5,6 +5,7 @@
 
 #define get_root_set(ptre) &((ptre)->root)
 #define get_node_set(ptn) ((ptn)->next)
+#define get_node_val(ptn) &((ptn)->what)
 //------------------------------------------------------------------------------
 
 static int compar_tnodes(const void * anode, const void * bnode)
@@ -80,7 +81,7 @@ static c_vector * make_set(int cap)
     return ret;
 }
 
-void * trie_insert(trie * tre, trie_val * tv_arr, int len)
+void * trie_insert(trie * tre, const trie_val * tv_arr, int len)
 {
     c_vector * next_node_set;
     int orig_cap = tre->orig_cap;
@@ -95,16 +96,44 @@ void * trie_insert(trie * tre, trie_val * tv_arr, int len)
     {
         next_node_set = get_node_set(this_node);
 
-        if (!next_node_set)
-                this_node->next = make_set(orig_cap);
-
         val_node.what = tv_arr[i];
-        this_node = c_vect_bsearch(next_node_set, &val_node);
-
-        if (!this_node)
+        if (!next_node_set)
+        {
+            next_node_set = this_node->next = make_set(orig_cap);
             this_node = c_vect_insert_online(next_node_set, &val_node);
+        }
+        else
+        {
+            this_node = c_vect_bsearch(next_node_set, &val_node);
+            if (!this_node)
+                this_node = c_vect_insert_online(next_node_set, &val_node);
+        }
     }
 
     return tre;
+}
+//------------------------------------------------------------------------------
+
+const trie_val * trie_lookup(const trie * tre, const trie_val * arr, int len)
+{
+#error "Implement!!!"
+}
+//------------------------------------------------------------------------------
+
+const c_vector * trie_get_root(const trie * tre)
+{
+    return get_root_set(tre);
+}
+//------------------------------------------------------------------------------
+
+const trie_val * trie_get_node_val(const trie_node * tn)
+{
+    return get_node_val(tn);
+}
+//------------------------------------------------------------------------------
+
+const c_vector * trie_get_node_set(const trie_node * tn)
+{
+    return get_node_set(tn);
 }
 //------------------------------------------------------------------------------

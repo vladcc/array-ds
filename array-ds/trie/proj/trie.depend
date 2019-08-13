@@ -4,18 +4,19 @@
 
 1565532996 /home/vld/Projects/array-ds/array-ds/trie/test_trie.h
 
-1565542804 source:/home/vld/Projects/array-ds/array-ds/trie/trie.c
+1565730167 source:/home/vld/Projects/array-ds/array-ds/trie/trie.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	"trie.h"
 
-1565537435 source:/home/vld/Projects/array-ds/array-ds/trie/test.c
+1565731707 source:/home/vld/Projects/array-ds/array-ds/trie/test.c
 	<stdio.h>
+	<string.h>
 	"trie.h"
 	"test.h"
 
-1565541021 /home/vld/Projects/array-ds/array-ds/trie/trie.h
+1565731924 /home/vld/Projects/array-ds/array-ds/trie/trie.h
 	"../c_vector/c_vector.h"
 
 1565533802 /home/vld/Projects/array-ds/array-ds/trie/test.h
