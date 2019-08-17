@@ -38,6 +38,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="../../c_vector/c_vector.h" />
+		<Unit filename="../../mem_pool/mem_pool.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../mem_pool/mem_pool.h" />
 		<Unit filename="../local_test.c">
 			<Option compilerVar="CC" />
 		</Unit>

@@ -1,5 +1,5 @@
 /*  c_vector.h -- a dynamic array
-    v1.123
+    v1.124
 
     A dynamic array implementation, much like the C++ vector.
     It copies whatever you provide it with inside itself. As such it can contain
@@ -22,7 +22,7 @@
 
     Author: Vladimir Dinev
     vld.dinev@gmail.com
-    2019-08-01
+    2019-08-10
 */
 
 #ifndef C_VECTOR_H
@@ -40,7 +40,7 @@ When a c_vector needs a buffer, it will allocate either element size or
 C_VECT_MAX_STACK_BUFF number of bytes on the stack, whichever is smaller. If the
 element size is greater than C_VECT_MAX_STACK_BUFF, the vector will malloc() an
 additional buffer big enough for a single element, use it, and free() it every
-time. As of v1.122, c_vector uses an additional buffer only for c_vect_swap()
+time. c_vector uses an additional buffer only for c_vect_swap()
 */
 
 // a three way comparison function like compar for qsort()

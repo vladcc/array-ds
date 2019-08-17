@@ -1,9 +1,9 @@
 /*  bit_vector.h -- a bit vector
-    v1.11
+    v1.111
 
     Author: Vladimir Dinev
     vld.dinev@gmail.com
-    2019-08-01
+    2019-08-10
 */
 
 #ifndef BIT_VECTOR_H

@@ -23,27 +23,22 @@ static void * mpl_add_slab(mem_pool * mpl)
 void * mpl_make(mem_pool * mpl, int elem_size, int node_cap)
 {
     c_vector * the_pool = &(mpl->the_pool);
-    void * ret = NULL;
 
     if (elem_size > 0 && node_cap > 0 &&
-        (ret = c_vect_make(the_pool, sizeof(void *), NULL)))
+        c_vect_make(the_pool, sizeof(void *), NULL))
     {
         mpl->elem_count = 0;
         mpl->elem_size = elem_size;
         mpl->node_cap = node_cap;
 
         if (mpl_add_slab(mpl))
-            ret = mpl;
+            return mpl;
         else
-        {
-            ret = NULL;
-            memset(mpl, 0, sizeof(*mpl));
-        }
+            c_vect_destroy(the_pool);
     }
-    else
-        memset(mpl, 0, sizeof(*mpl));
 
-    return ret;
+    memset(mpl, 0, sizeof(*mpl));
+    return NULL;
 }
 //------------------------------------------------------------------------------
 

@@ -1,5 +1,5 @@
 /*  mem_pool.h -- memory pool
-    v1.1
+    v1.11
 
     A c_vector of memory blocks.
     Allocates a contiguous piece of memory, gives you pointers to a preset
@@ -9,7 +9,7 @@
 
     Author: Vladimir Dinev
     vld.dinev@gmail.com
-    2019-03-02
+    2019-08-18
 */
 
 #ifndef MEM_POOL_H

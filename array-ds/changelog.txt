@@ -26,7 +26,7 @@ const added to:
 bit_vect_num_of_bits()
 bit_vect_get()
 
-oa_htable: v1.1, new v1.11
+oa_htable: old v1.1, new v1.11
 const added to:
 oa_htbl_lookup()
 oa_htbl_is_empty()
@@ -40,7 +40,7 @@ cv_htbl_elem_count()
 cv_htbl_is_empty()
 cv_htbl_lookup()
 
-f_array: v1.0, new v1.1
+f_array: old v1.0, new v1.1
 const added to:
 f_arr_capacity()
 f_arr_elem_size()
@@ -54,13 +54,32 @@ cpp code updated in sync
 cpp headers renamed to hpp
 
 2019-08-10
-memcmp() checks fixed in c_vector, f_array, ov_mmap, and ov_mset
+memcmp() checks fixed in c_vector, f_array, ov_multimap, and ov_multiset
+
 Bugfix: container structs for the above are now zeroed on creation failure
 All compar functions for ints update to branchless
+
 Fix: both values cast to unsigned int in bit_vector, cv_htbl, oa_htbl range 
-checks and in jenkins hash .cpps updated as well
+checks and in Jenkins hash .cpps updated as well
+
+c_vector: old v1.123, new v1.124
+f_array: old v1.1, new v1.11
+ov_multimap: old v1.111, new v1.112
+ov_multiset: old v1.11, new v1.111
+bit_vector: old v1.11, new v1.111
+cv_htbl: old v1.1, new v1.11
+oa_htbl: old v1.11, new v1.111
 
 2019-08-11
+ov_set: v1.01, new v1.02
 ov_set_insert() now always returns a pointer to the element, rather than NULL
 if the element is already in the set.
+
 trie added
+
+2019-08-18
+mem_pool: v1.1, new v1.11
+mpl_make() now destroys internal vector on failure
+
+trie: v1.0 
+done, documented, tested, added to all_tests

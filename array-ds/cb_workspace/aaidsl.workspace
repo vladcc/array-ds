@@ -10,9 +10,9 @@
 		<Project filename="../mem_pool/proj/mem_pool.cbp" />
 		<Project filename="../oa_htable/proj/oa_htable.cbp" />
 		<Project filename="../cv_htable/proj/cv_htable.cbp" />
-		<Project filename="../tests/timings/proj/timings.cbp" />
-		<Project filename="../tests/all_tests/proj/all_tests.cbp" />
 		<Project filename="../fixed_array/proj/fixed_array.cbp" />
 		<Project filename="../trie/proj/trie.cbp" />
+		<Project filename="../tests/all_tests/proj/all_tests.cbp" />
+		<Project filename="../tests/timings/proj/timings.cbp" />
 	</Workspace>
 </CodeBlocks_workspace_file>

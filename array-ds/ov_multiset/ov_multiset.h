@@ -1,5 +1,5 @@
 /*  ov_multiset.h -- ordered vector multiset
-    v1.11
+    v1.111
 
     It's a set which counts how many times an element has been inserted (its
     multiplicity) As such it allocates extra memory for a counter, which is an
@@ -7,7 +7,7 @@
 
     Author: Vladimir Dinev
     vld.dinev@gmail.com
-    2019-08-01
+    2019-08-10
 */
 
 #ifndef OV_MULTISET_H

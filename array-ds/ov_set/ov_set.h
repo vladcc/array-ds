@@ -1,5 +1,5 @@
 /*  ov_set.h -- ordered vector set
-    v1.01
+    v1.02
 
     The ov_set is a c_vector which keeps itself sorted and uses binary search
     for lookup. The main difference between this and ov_map is that ov_set
@@ -8,7 +8,7 @@
 
     Author: Vladimir Dinev
     vld.dinev@gmail.com
-    2019-02-23
+    2019-08-11
 */
 
 #ifndef OV_SET_H

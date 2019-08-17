@@ -1,5 +1,5 @@
 /*  f_array.h -- a static array
-    v1.1
+    v1.11
 
     A static array implementation.
     It copies whatever you provide it with inside itself. As such it can contain
@@ -19,7 +19,7 @@
 
     Author: Vladimir Dinev
     vld.dinev@gmail.com
-    2019-08-01
+    2019-08-10
 */
 
 #ifndef FIXED_ARRAY_H
@@ -34,7 +34,7 @@ When a f_array needs a buffer, it will allocate either element size or
 F_ARR_MAX_STACK_BUFF number of bytes on the stack, whichever is smaller. If the
 element size is greater than F_ARR_MAX_STACK_BUFF, the array will malloc() an
 additional buffer big enough for a single element, use it, and free() it every
-time. As of v1.0, f_array uses an additional buffer only for f_arr_swap()
+time. f_array uses an additional buffer only for f_arr_swap()
 */
 
 // a three way comparison function like compar for qsort()

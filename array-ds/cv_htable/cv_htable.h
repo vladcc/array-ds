@@ -1,5 +1,5 @@
 /*  cv_htable.h -- vector chained hash table
-    v1.1
+    v1.11
 
     A hash table chained with c_vectors. Behaves like a set, doubles its
     bucket count once the load factor is reached. All buckets are created with
@@ -7,7 +7,7 @@
 
     Author: Vladimir Dinev
     vld.dinev@gmail.com
-    2019-08-01
+    2019-08-10
 */
 
 #ifndef CV_HTBL_H

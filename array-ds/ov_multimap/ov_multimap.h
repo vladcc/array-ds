@@ -1,5 +1,5 @@
 /*  ov_multimap.h -- ordered vector multimap
-    v1.111
+    v1.112
 
     ov_multimap is an ordered vector set of keys. Every key can be associated
     with multiple values. Additional memory is allocated after every key for a
@@ -9,7 +9,7 @@
 
     Author: Vladimir Dinev
     vld.dinev@gmail.com
-    2019-08-01
+    2019-08-10
 */
 
 #ifndef OV_MULTIMAP_H

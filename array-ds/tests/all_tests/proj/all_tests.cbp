@@ -120,6 +120,15 @@
 		</Unit>
 		<Unit filename="../../../ov_set/test.h" />
 		<Unit filename="../../../ov_set/test_ov_set.h" />
+		<Unit filename="../../../trie/test.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../../trie/test.h" />
+		<Unit filename="../../../trie/test_trie.h" />
+		<Unit filename="../../../trie/trie.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../../trie/trie.h" />
 		<Unit filename="../test_all.c">
 			<Option compilerVar="CC" />
 		</Unit>

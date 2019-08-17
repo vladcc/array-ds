@@ -1,5 +1,5 @@
 /*  oa_htable.h -- open address hash table
-    v1.11
+    v1.111
 
     Generic open address hash table, uses c_vector as a base. Inserts an element
     only if it's not already inside. In other words, behaves like a set. Grows
@@ -7,7 +7,7 @@
 
     Author: Vladimir Dinev
     vld.dinev@gmail.com
-    2019-08-01
+    2019-08-10
 */
 
 #ifndef OA_HTBL_H
