@@ -17,6 +17,11 @@
 			<Cursor1 position="369" topLine="0" />
 		</Cursor>
 	</File>
+	<File name="../../c_vector/c_vector.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="5295" topLine="160" />
+		</Cursor>
+	</File>
 	<File name="../../c_vector/c_vector.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="1373" topLine="32" />
@@ -30,11 +35,6 @@
 	<File name="../local_test.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="80" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="../../c_vector/c_vector.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="5295" topLine="160" />
 		</Cursor>
 	</File>
 	<File name="../test_ov_set.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">

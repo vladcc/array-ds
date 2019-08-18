@@ -1,5 +1,5 @@
 /*  trie.h -- a prefix tree
-    v1.0
+    v1.1
 
     The c_vectors are treated as sets and are kept sorted in the internal
     structure of the trie. They are used instead of ov_sets because of
@@ -12,11 +12,13 @@
     It makes sense for TRIE_DEFAULT_CAP to be at least a double digit number.
 
     Each trie node contains a trie_val part with the value of that node as well
-    as a tag for that value and a pointer to a c_vector. If that pointer is
-    NULL, this means the node is a leaf. If it's not NULL, the c_vector it
-    points to is an ordered set of all nodes which continue the word. The nodes
-    hold a c_vector * instead of a c_vector struct so the leaves of the trie do
-    not waste memory. On lookup only the val part of the trie_val is compared.
+    as a tag for that value and a pointer to a c_vector. The tag is a void * so
+    it could be used as a flag and point to something useful. If the c_vector
+    pointer is NULL, this means the node is a leaf. If it's not NULL, the
+    c_vector it points to is an ordered set of all nodes which continue the
+    word. The nodes hold a c_vector * instead of a c_vector struct so the leaves
+    of the trie do not waste memory. On lookup only the val part of the trie_val
+    is compared.
 
     Author: Vladimir Dinev
     vld.dinev@gmail.com
@@ -29,14 +31,13 @@
 #include "../c_vector/c_vector.h"
 #include "../mem_pool/mem_pool.h"
 
-#define TRIE_TAG_DEFAULT  0
-#define TRIE_TAG_WORD_END 1
+#define TRIE_TAG_NULL     NULL
 #define TRIE_DEFAULT_CAP  26
 
 // Use macros or at own risk
 typedef struct trie_val {
     int val;
-    int tag;
+    void * tag;
 } trie_val;
 
 // Do not use directly
@@ -72,13 +73,13 @@ the structure.
 Complexity: O(1)
 */
 
-void trie_str_to_tval(const char * str, trie_val * tv_arr, int len);
+void trie_str_to_tval(const char * str, trie_val * tv_arr, int len, void * tag);
 /*
 Returns: Nothing.
 
 Description: Populates tv_arr with the content of str. The tag of the last
-element is set to TRIE_TAG_WORD_END, the tags for all others to
-TRIE_TAG_DEFAULT. len is the length of str. tv_arr is expected to be of at least
+element is set to the tag parameter, the tags for all others to
+TRIE_TAG_NULL. len is the length of str. tv_arr is expected to be of at least
 the same length.
 
 Complexity: O(n)
@@ -155,7 +156,7 @@ Description: Gets you the c_vector part of tn.
 Complexity: O(1)
 */
 
-trie_val trie_make_tval(int val, int tag);
+trie_val trie_make_tval(int val, void * tag);
 /*
 Returns: A trie_val struct with val and tag members set to the val and tag
 parameters, respectively.
@@ -166,7 +167,7 @@ Complexity: O(1)
 */
 
 #define trie_val_get_val(ptval) ((int)(ptval)->val)
-#define trie_val_get_tag(ptval) ((int)(ptval)->tag)
+#define trie_val_get_tag(ptval) ((void *)(ptval)->tag)
 /*
 Returns: The val and tag from the trie_val pointer to by ptval, respectively.
 

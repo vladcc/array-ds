@@ -81,5 +81,9 @@ trie added
 mem_pool: v1.1, new v1.11
 mpl_make() now destroys internal vector on failure
 
-trie: v1.0 
+trie: v1.0
 done, documented, tested, added to all_tests
+
+trie: old v1.0, new v1.1
+the type of the tag member of trie_val is now a void *
+TRIE_TAG_DEFAULT changed to TRIE_TAG_NULL

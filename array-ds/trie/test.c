@@ -11,6 +11,9 @@ static ftest tests[] = {
 };
 //------------------------------------------------------------------------------
 
+static char reserved;
+#define TRIE_TAG_WORD_END (&reserved)
+
 static bool test_trie(void)
 {
 #define LEN 100
@@ -21,7 +24,7 @@ static bool test_trie(void)
         check(trie_make(the_trie) == the_trie);
         char str[] = "a";
         int len = strlen(str);
-        trie_str_to_tval(str, vals, len);
+        vals[0] = trie_make_tval('a', TRIE_TAG_WORD_END);
 
         check(trie_insert(the_trie, vals, len) == the_trie);
 
@@ -55,7 +58,7 @@ static bool test_trie(void)
         check(trie_make(the_trie) == the_trie);
         char str[] = "abc";
         int len = strlen(str);
-        trie_str_to_tval(str, vals, len);
+        trie_str_to_tval(str, vals, len, TRIE_TAG_WORD_END);
 
         check(trie_insert(the_trie, vals, len) == the_trie);
 
@@ -69,7 +72,7 @@ static bool test_trie(void)
         check(tval);
 
         check(tval->val == str[lup_ind]);
-        check(tval->tag == TRIE_TAG_DEFAULT);
+        check(tval->tag == TRIE_TAG_NULL);
 
         ++lup_ind;
         tnode = trie_lookup_next(tnode, &vals[lup_ind]);
@@ -77,7 +80,7 @@ static bool test_trie(void)
         tval = trie_get_node_tval(tnode);
         check(tval);
         check(trie_val_get_val(tval) == str[lup_ind]);
-        check(trie_val_get_tag(tval) == TRIE_TAG_DEFAULT);
+        check(trie_val_get_tag(tval) == TRIE_TAG_NULL);
         check(trie_get_node_set(tnode) != NULL);
 
         ++lup_ind;
@@ -107,7 +110,7 @@ static bool test_trie(void)
         check(trie_make(the_trie) == the_trie);
         char str[] = "abc";
         int len = strlen(str);
-        trie_str_to_tval(str, vals, len);
+        trie_str_to_tval(str, vals, len, TRIE_TAG_WORD_END);
         check(vals[len-1].tag == TRIE_TAG_WORD_END);
 
         check(trie_insert(the_trie, vals, len) == the_trie);
@@ -126,7 +129,7 @@ static bool test_trie(void)
         const trie_node * remember_b = tnode;
 
         check(tval->val == 'b');
-        check(tval->tag == TRIE_TAG_DEFAULT);
+        check(tval->tag == TRIE_TAG_NULL);
 
         tnode = trie_lookup(the_trie, vals, len);
         check(tnode);
@@ -138,7 +141,7 @@ static bool test_trie(void)
 
         char str2[] = "ab";
         int len2 = strlen(str2);
-        trie_str_to_tval(str2, vals, len2);
+        trie_str_to_tval(str2, vals, len2, TRIE_TAG_WORD_END);
         check(vals[len2-1].val == 'b');
         check(vals[len2-1].tag == TRIE_TAG_WORD_END);
 
@@ -147,7 +150,7 @@ static bool test_trie(void)
         tval = trie_get_node_tval(tnode);
         check(tval);
         check(tval->val == 'b');
-        check(tval->tag == TRIE_TAG_DEFAULT);
+        check(tval->tag == TRIE_TAG_NULL);
 
         check(trie_insert(the_trie, vals, len2) == the_trie);
 
@@ -170,7 +173,7 @@ static bool test_trie(void)
 
         char str3[] = "abcdez";
         int len3 = strlen(str3);
-        trie_str_to_tval(str3, vals, len3);
+        trie_str_to_tval(str3, vals, len3, TRIE_TAG_WORD_END);
 
         check(trie_insert(the_trie, vals, len3) == the_trie);
 
@@ -185,7 +188,7 @@ static bool test_trie(void)
         check(tval);
 
         check(tval->val == 'a');
-        check(tval->tag == TRIE_TAG_DEFAULT);
+        check(tval->tag == TRIE_TAG_NULL);
 
         tnode = trie_lookup(the_trie, vals, len2);
         check(tnode);
@@ -210,7 +213,7 @@ static bool test_trie(void)
         check(tval);
 
         check(tval->val == 'd');
-        check(tval->tag == TRIE_TAG_DEFAULT);
+        check(tval->tag == TRIE_TAG_NULL);
 
         tnode = trie_lookup(the_trie, vals, len3-1);
         check(tnode);
@@ -218,7 +221,7 @@ static bool test_trie(void)
         check(tval);
 
         check(tval->val == 'e');
-        check(tval->tag == TRIE_TAG_DEFAULT);
+        check(tval->tag == TRIE_TAG_NULL);
 
         tnode = trie_lookup(the_trie, vals, len3);
         check(tnode);
@@ -236,27 +239,29 @@ static bool test_trie(void)
         check(trie_make(the_trie) == the_trie);
         char apple_str[] = "apple";
         int apple_len = strlen(apple_str);
-        trie_str_to_tval(apple_str, vals, apple_len);
+        trie_str_to_tval(apple_str, vals, apple_len, TRIE_TAG_WORD_END);
         check(trie_insert(the_trie, vals, apple_len) == the_trie);
 
         char applause_str[] = "applause";
         int applause_len = strlen(applause_str);
-        trie_str_to_tval(applause_str, vals, applause_len);
+        trie_str_to_tval(applause_str, vals, applause_len, TRIE_TAG_WORD_END);
         check(trie_insert(the_trie, vals, applause_len) == the_trie);
 
         char apprehension_str[] = "apprehension";
         int apprehension_len = strlen(apprehension_str);
-        trie_str_to_tval(apprehension_str, vals, apprehension_len);
+        trie_str_to_tval(
+            apprehension_str, vals, apprehension_len, TRIE_TAG_WORD_END
+            );
         check(trie_insert(the_trie, vals, apprehension_len) == the_trie);
 
         char tank_str[] = "tank";
         int tank_len = strlen(tank_str);
-        trie_str_to_tval(tank_str, vals, tank_len);
+        trie_str_to_tval(tank_str, vals, tank_len, TRIE_TAG_WORD_END);
         check(trie_insert(the_trie, vals, tank_len) == the_trie);
 
         char tiger_str[] = "tiger";
         int tiger_len = strlen(tiger_str);
-        trie_str_to_tval(tiger_str, vals, tiger_len);
+        trie_str_to_tval(tiger_str, vals, tiger_len, TRIE_TAG_WORD_END);
         check(trie_insert(the_trie, vals, tiger_len) == the_trie);
 
         const c_vector * rset = trie_get_root_set(the_trie);
@@ -267,7 +272,7 @@ static bool test_trie(void)
 
         char app_str[] = "app";
         int app_len = strlen(app_str);
-        trie_str_to_tval(app_str, vals, app_len);
+        trie_str_to_tval(app_str, vals, app_len, TRIE_TAG_WORD_END);
 
         tnode = trie_lookup(the_trie, vals, app_len);
         check(tnode);
@@ -275,12 +280,12 @@ static bool test_trie(void)
         check(tval);
 
         check(tval->val == 'p');
-        check(tval->tag == TRIE_TAG_DEFAULT);
+        check(tval->tag == TRIE_TAG_NULL);
 
         const c_vector * nset = trie_get_node_set(tnode);
         check(c_vect_length(nset) == 2);
 
-        trie_str_to_tval(apple_str, vals, apple_len);
+        trie_str_to_tval(apple_str, vals, apple_len, TRIE_TAG_WORD_END);
         tnode = trie_lookup(the_trie, vals, apple_len);
         check(tnode);
         tval = trie_get_node_tval(tnode);
@@ -288,7 +293,7 @@ static bool test_trie(void)
         check(tval->val == 'e');
         check(tval->tag == TRIE_TAG_WORD_END);
 
-        trie_str_to_tval(applause_str, vals, applause_len);
+        trie_str_to_tval(applause_str, vals, applause_len, TRIE_TAG_WORD_END);
         tnode = trie_lookup(the_trie, vals, applause_len);
         check(tnode);
         tval = trie_get_node_tval(tnode);
@@ -296,7 +301,9 @@ static bool test_trie(void)
         check(tval->val == 'e');
         check(tval->tag == TRIE_TAG_WORD_END);
 
-        trie_str_to_tval(apprehension_str, vals, apprehension_len);
+        trie_str_to_tval(
+            apprehension_str, vals, apprehension_len, TRIE_TAG_WORD_END
+            );
         tnode = trie_lookup(the_trie, vals, apprehension_len);
         check(tnode);
         tval = trie_get_node_tval(tnode);
@@ -304,18 +311,18 @@ static bool test_trie(void)
         check(tval->val == 'n');
         check(tval->tag == TRIE_TAG_WORD_END);
 
-        trie_val _tv = {.val = 't', .tag = TRIE_TAG_DEFAULT};
+        trie_val _tv = {.val = 't', .tag = TRIE_TAG_NULL};
         tnode = trie_lookup_first(the_trie, &_tv);
         check(tnode);
         tval = trie_get_node_tval(tnode);
         check(tval);
         check(tval->val == 't');
-        check(tval->tag == TRIE_TAG_DEFAULT);
+        check(tval->tag == TRIE_TAG_NULL);
 
         nset = trie_get_node_set(tnode);
         check(c_vect_length(nset) == 2);
 
-        trie_str_to_tval(tank_str, vals, tank_len);
+        trie_str_to_tval(tank_str, vals, tank_len, TRIE_TAG_WORD_END);
         tnode = trie_lookup(the_trie, vals, tank_len);
         check(tnode);
         tval = trie_get_node_tval(tnode);
@@ -323,7 +330,7 @@ static bool test_trie(void)
         check(tval->val == 'k');
         check(tval->tag == TRIE_TAG_WORD_END);
 
-        trie_str_to_tval(tiger_str, vals, tiger_len);
+        trie_str_to_tval(tiger_str, vals, tiger_len, TRIE_TAG_WORD_END);
         tnode = trie_lookup(the_trie, vals, tiger_len);
         check(tnode);
         tval = trie_get_node_tval(tnode);

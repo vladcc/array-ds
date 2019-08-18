@@ -61,21 +61,21 @@ void trie_destroy(trie * tre)
 }
 //------------------------------------------------------------------------------
 
-trie_val trie_make_tval(int val, int tag)
+trie_val trie_make_tval(int val, void * tag)
 {
     trie_val ret = {.val = val, .tag = tag};
     return ret;
 }
 //------------------------------------------------------------------------------
 
-void trie_str_to_tval(const char * str, trie_val * tv_arr, int len)
+void trie_str_to_tval(const char * str, trie_val * tv_arr, int len, void * tag)
 {
     for (int i = 0; i < len; ++i)
     {
         tv_arr[i].val = str[i];
-        tv_arr[i].tag = TRIE_TAG_DEFAULT;
+        tv_arr[i].tag = TRIE_TAG_NULL;
     }
-    tv_arr[len-1].tag = TRIE_TAG_WORD_END;
+    tv_arr[len-1].tag = tag;
 }
 //------------------------------------------------------------------------------
 
@@ -87,7 +87,8 @@ void * trie_insert(trie * tre, const trie_val * tv_arr, int len)
     trie_node val_node, dummy, * this_node;
 
     val_node.next = NULL;
-    dummy.what.val = dummy.what.tag = DUMMY_VAL;
+    dummy.what.val = DUMMY_VAL;
+    dummy.what.tag = TRIE_TAG_NULL;
     dummy.next = get_root_set(tre);
     this_node = &dummy;
 
@@ -136,7 +137,8 @@ const trie_node * trie_lookup_first(const trie * tre, const trie_val * val)
 
     val_node.what = *val;
     val_node.next = NULL;
-    dummy.what.val = dummy.what.tag = DUMMY_VAL;
+    dummy.what.val = DUMMY_VAL;
+    dummy.what.tag = TRIE_TAG_NULL;
     dummy.next = (c_vector *)get_root_set(tre);
 
     return c_vect_bsearch(dummy.next, &val_node);
