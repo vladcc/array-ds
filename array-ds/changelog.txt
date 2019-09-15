@@ -87,3 +87,12 @@ done, documented, tested, added to all_tests
 trie: old v1.0, new v1.1
 the type of the tag member of trie_val is now a void *
 TRIE_TAG_DEFAULT changed to TRIE_TAG_NULL
+
+2019-09-16
+trie: old v1.1, new v1.11
+trie_val renamed to trie_node_val
+trie_get_root_set() renamed to trie_root_get_set()
+trie_get_node_tval() renamed to trie_node_get_val()
+trie_get_node_set() renamed to trie_node_get_set()
+trie_make_tval() renamed to trie_make_trie_node_val()
+

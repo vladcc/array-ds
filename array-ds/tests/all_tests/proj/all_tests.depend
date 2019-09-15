@@ -1,1 +1,235 @@
 # depslib dependency file v1.0
+1565432894 source:/home/vld/Projects/array-ds/array-ds/bit_vector/bit_vector.c
+	<string.h>
+	<limits.h>
+	<stdlib.h>
+	"bit_vector.h"
+
+1566080803 /home/vld/Projects/array-ds/array-ds/bit_vector/bit_vector.h
+	<stdbool.h>
+
+1558635017 source:/home/vld/Projects/array-ds/array-ds/bit_vector/test.c
+	<stdio.h>
+	<string.h>
+	<stdbool.h>
+	<limits.h>
+	"bit_vector.h"
+	"test.h"
+
+1558635017 /home/vld/Projects/array-ds/array-ds/bit_vector/test.h
+
+1565430628 source:/home/vld/Projects/array-ds/array-ds/c_vector/c_vector.c
+	<string.h>
+	<stdlib.h>
+	"c_vector.h"
+
+1566080642 /home/vld/Projects/array-ds/array-ds/c_vector/c_vector.h
+	<stdbool.h>
+	<stddef.h>
+
+1565432263 source:/home/vld/Projects/array-ds/array-ds/c_vector/test.c
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+	<stdbool.h>
+	"c_vector.h"
+	"test.h"
+
+1558635017 /home/vld/Projects/array-ds/array-ds/c_vector/test.h
+
+1565432777 source:/home/vld/Projects/array-ds/array-ds/cv_htable/cv_htable.c
+	<string.h>
+	"cv_htable.h"
+	"cvh_default_hash.c"
+
+1566080859 /home/vld/Projects/array-ds/array-ds/cv_htable/cv_htable.h
+	"../c_vector/c_vector.h"
+
+1565433045 /home/vld/Projects/array-ds/array-ds/cv_htable/cvh_default_hash.c
+
+1565432270 source:/home/vld/Projects/array-ds/array-ds/cv_htable/test.c
+	<stdio.h>
+	<string.h>
+	<stdbool.h>
+	"cv_htable.h"
+	"test.h"
+
+1558635017 /home/vld/Projects/array-ds/array-ds/cv_htable/test.h
+
+1565431231 source:/home/vld/Projects/array-ds/array-ds/fixed_array/f_array.c
+	<string.h>
+	<stdlib.h>
+	"f_array.h"
+
+1566080617 /home/vld/Projects/array-ds/array-ds/fixed_array/f_array.h
+	<stdbool.h>
+	<stddef.h>
+
+1565432324 source:/home/vld/Projects/array-ds/array-ds/fixed_array/test.c
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+	<stdbool.h>
+	"f_array.h"
+	"test.h"
+
+1560182801 /home/vld/Projects/array-ds/array-ds/fixed_array/test.h
+
+1566079637 source:/home/vld/Projects/array-ds/array-ds/mem_pool/mem_pool.c
+	<string.h>
+	<stdlib.h>
+	<stdbool.h>
+	"mem_pool.h"
+
+1566079754 /home/vld/Projects/array-ds/array-ds/mem_pool/mem_pool.h
+	"../c_vector/c_vector.h"
+
+1558635017 source:/home/vld/Projects/array-ds/array-ds/mem_pool/test.c
+	<stdio.h>
+	<string.h>
+	<stdbool.h>
+	"mem_pool.h"
+	"test.h"
+
+1558635017 /home/vld/Projects/array-ds/array-ds/mem_pool/test.h
+
+1565432822 source:/home/vld/Projects/array-ds/array-ds/oa_htable/oa_htable.c
+	<math.h>
+	<string.h>
+	"oa_htable.h"
+	"oah_default_hash.c"
+
+1566080913 /home/vld/Projects/array-ds/array-ds/oa_htable/oa_htable.h
+	"../c_vector/c_vector.h"
+	"../bit_vector/bit_vector.h"
+
+1565433050 /home/vld/Projects/array-ds/array-ds/oa_htable/oah_default_hash.c
+
+1565432324 source:/home/vld/Projects/array-ds/array-ds/oa_htable/test.c
+	<math.h>
+	<stdio.h>
+	<string.h>
+	<limits.h>
+	<stdbool.h>
+	"oa_htable.h"
+	"test.h"
+
+1558635017 /home/vld/Projects/array-ds/array-ds/oa_htable/test.h
+
+1558635017 source:/home/vld/Projects/array-ds/array-ds/ov_map/ov_map.c
+	"ov_map.h"
+
+1558635017 /home/vld/Projects/array-ds/array-ds/ov_map/ov_map.h
+	"../c_vector/c_vector.h"
+
+1558635017 source:/home/vld/Projects/array-ds/array-ds/ov_map/test.c
+	<stdio.h>
+	<string.h>
+	"ov_map.h"
+	"test.h"
+
+1558635017 /home/vld/Projects/array-ds/array-ds/ov_map/test.h
+
+1565430824 source:/home/vld/Projects/array-ds/array-ds/ov_multimap/ov_multimap.c
+	<stdlib.h>
+	<string.h>
+	"ov_multimap.h"
+
+1566080682 /home/vld/Projects/array-ds/array-ds/ov_multimap/ov_multimap.h
+	"../c_vector/c_vector.h"
+	"../ov_set/ov_set.h"
+
+1566080378 /home/vld/Projects/array-ds/array-ds/ov_set/ov_set.h
+	"../c_vector/c_vector.h"
+
+1565430923 source:/home/vld/Projects/array-ds/array-ds/ov_multimap/test.c
+	<stdio.h>
+	<string.h>
+	<stdbool.h>
+	"ov_multimap.h"
+	"test.h"
+
+1558635017 /home/vld/Projects/array-ds/array-ds/ov_multimap/test.h
+
+1565430987 source:/home/vld/Projects/array-ds/array-ds/ov_multiset/ov_multiset.c
+	<stdlib.h>
+	<string.h>
+	"ov_multiset.h"
+
+1566080742 /home/vld/Projects/array-ds/array-ds/ov_multiset/ov_multiset.h
+	"../c_vector/c_vector.h"
+
+1565432394 source:/home/vld/Projects/array-ds/array-ds/ov_multiset/test.c
+	<stdio.h>
+	<string.h>
+	<stdbool.h>
+	<math.h>
+	"ov_multiset.h"
+	"test.h"
+
+1558635017 /home/vld/Projects/array-ds/array-ds/ov_multiset/test.h
+
+1565532461 source:/home/vld/Projects/array-ds/array-ds/ov_set/ov_set.c
+	"ov_set.h"
+
+1565532443 source:/home/vld/Projects/array-ds/array-ds/ov_set/test.c
+	<stdio.h>
+	"ov_set.h"
+	"test.h"
+
+1558635017 /home/vld/Projects/array-ds/array-ds/ov_set/test.h
+
+1568585358 source:/home/vld/Projects/array-ds/array-ds/trie/test.c
+	<stdio.h>
+	<string.h>
+	"trie.h"
+	"test.h"
+	"test_trie.h"
+
+1568585422 /home/vld/Projects/array-ds/array-ds/trie/trie.h
+	"../c_vector/c_vector.h"
+	"../mem_pool/mem_pool.h"
+
+1565533802 /home/vld/Projects/array-ds/array-ds/trie/test.h
+	<stdbool.h>
+
+1565532996 /home/vld/Projects/array-ds/array-ds/trie/test_trie.h
+
+1568585358 source:/home/vld/Projects/array-ds/array-ds/trie/trie.c
+	<string.h>
+	"trie.h"
+
+1566082881 source:/home/vld/Projects/array-ds/array-ds/tests/all_tests/test_all.c
+	<stdio.h>
+	"../../c_vector/test_c_vect.h"
+	"../../ov_map/test_ov_map.h"
+	"../../ov_set/test_ov_set.h"
+	"../../ov_multimap/test_ov_mmap.h"
+	"../../ov_multiset/test_ov_mset.h"
+	"../../mem_pool/test_mem_pool.h"
+	"../../bit_vector/test_bit_vect.h"
+	"../../oa_htable/test_oa_htbl.h"
+	"../../cv_htable/test_cv_htbl.h"
+	"../../fixed_array/test_f_arr.h"
+	"../../trie/test_trie.h"
+
+1558635017 /home/vld/Projects/array-ds/array-ds/c_vector/test_c_vect.h
+
+1558635017 /home/vld/Projects/array-ds/array-ds/ov_map/test_ov_map.h
+
+1558635017 /home/vld/Projects/array-ds/array-ds/ov_set/test_ov_set.h
+
+1558635017 /home/vld/Projects/array-ds/array-ds/ov_multimap/test_ov_mmap.h
+
+1558635017 /home/vld/Projects/array-ds/array-ds/ov_multiset/test_ov_mset.h
+
+1558635017 /home/vld/Projects/array-ds/array-ds/mem_pool/test_mem_pool.h
+
+1558635017 /home/vld/Projects/array-ds/array-ds/bit_vector/test_bit_vect.h
+
+1558635017 /home/vld/Projects/array-ds/array-ds/oa_htable/test_oa_htbl.h
+
+1558635017 /home/vld/Projects/array-ds/array-ds/cv_htable/test_cv_htbl.h
+
+1560182801 /home/vld/Projects/array-ds/array-ds/fixed_array/test_f_arr.h
+

@@ -1,5 +1,5 @@
 /*  trie.h -- a prefix tree
-    v1.1
+    v1.11
 
     The c_vectors are treated as sets and are kept sorted in the internal
     structure of the trie. They are used instead of ov_sets because of
@@ -22,7 +22,7 @@
 
     Author: Vladimir Dinev
     vld.dinev@gmail.com
-    2019-08-18
+    2019-09-16
 */
 
 #ifndef TRIE_H
@@ -35,14 +35,14 @@
 #define TRIE_DEFAULT_CAP  26
 
 // Use macros or at own risk
-typedef struct trie_val {
+typedef struct trie_node_val {
     int val;
     void * tag;
-} trie_val;
+} trie_node_val;
 
 // Do not use directly
 typedef struct trie_node {
-    trie_val what;
+    trie_node_val what;
     c_vector * next;
 } trie_node;
 
@@ -73,7 +73,7 @@ the structure.
 Complexity: O(1)
 */
 
-void trie_str_to_tval(const char * str, trie_val * tv_arr, int len, void * tag);
+void trie_str_to_tval(const char * str, trie_node_val * tv_arr, int len, void * tag);
 /*
 Returns: Nothing.
 
@@ -85,7 +85,7 @@ the same length.
 Complexity: O(n)
 */
 
-void * trie_insert(trie * tre, const trie_val * tv_arr, int len);
+void * trie_insert(trie * tre, const trie_node_val * tv_arr, int len);
 /*
 Returns: tre on success, NULL otherwise.
 
@@ -97,7 +97,7 @@ Complexity: O(n)
 */
 
 const trie_node * trie_lookup(
-    const trie * tre, const trie_val * tv_arr, int len
+    const trie * tre, const trie_node_val * tv_arr, int len
     );
 /*
 Returns: A pointer to the node matching the value of the last element of tv_arr
@@ -108,7 +108,7 @@ Description: Looks ups a tv_arr of length len in the trie.
 Complexity: O(n)
 */
 
-const trie_node * trie_lookup_first(const trie * tre, const trie_val * val);
+const trie_node * trie_lookup_first(const trie * tre, const trie_node_val * val);
 /*
 Returns: A pointer to the node matching the value of val on success,
 NULL if not found.
@@ -118,7 +118,7 @@ Description: Looks for val in the root set of the trie.
 Complexity: O(1)
 */
 
-const trie_node * trie_lookup_next(const trie_node * tn, const trie_val * val);
+const trie_node * trie_lookup_next(const trie_node * tn, const trie_node_val * val);
 /*
 Returns: A pointer to the node matching the value of val on success,
 NULL if not found.
@@ -128,7 +128,7 @@ Description: Looks for val in any node that is not the root of the trie.
 Complexity: O(1)
 */
 
-const c_vector * trie_get_root_set(const trie * tre);
+const c_vector * trie_root_get_set(const trie * tre);
 /*
 Returns: A pointer to the root set of the trie.
 
@@ -138,7 +138,7 @@ the trie.
 Complexity: O(1)
 */
 
-const trie_val * trie_get_node_tval(const trie_node * tn);
+const trie_node_val * trie_node_get_val(const trie_node * tn);
 /*
 Returns: A pointer to the trie_val part of node tn.
 
@@ -147,7 +147,7 @@ Description: Gets you trie_val part of tn.
 Complexity: O(1)
 */
 
-const c_vector * trie_get_node_set(const trie_node * tn);
+const c_vector * trie_node_get_set(const trie_node * tn);
 /*
 Returns: A pointer to the set part of node tn.
 
@@ -156,7 +156,7 @@ Description: Gets you the c_vector part of tn.
 Complexity: O(1)
 */
 
-trie_val trie_make_tval(int val, void * tag);
+trie_node_val trie_make_trie_node_val(int val, void * tag);
 /*
 Returns: A trie_val struct with val and tag members set to the val and tag
 parameters, respectively.
@@ -197,5 +197,4 @@ Description: Keeps the const trie_node * promise.
 
 Complexity: O(1)
 */
-
 #endif
