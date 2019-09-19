@@ -642,3 +642,15 @@ int c_vect_capacity(const c_vector * cv)
     return cv->capacity;
 }
 //------------------------------------------------------------------------------
+
+int c_vect_data_size_bytes(const c_vector * cv)
+{
+    return cv->elem_count * cv->elem_size;
+}
+//------------------------------------------------------------------------------
+
+int c_vect_cap_size_bytes(const c_vector * cv)
+{
+    return cv->capacity * cv->elem_size;
+}
+//------------------------------------------------------------------------------

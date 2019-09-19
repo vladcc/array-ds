@@ -1065,6 +1065,13 @@ static bool test_append_array(void)
 
     check(c_vect_length(vect) == iend+size_iarr);
 
+    check(c_vect_cap_size_bytes(vect) == 16*esz);
+    check(c_vect_cap_size_bytes(vect) ==
+        (c_vect_capacity(vect) * c_vect_elem_size(vect)));
+    check(c_vect_data_size_bytes(vect) == i*esz);
+    check(c_vect_data_size_bytes(vect) ==
+        (c_vect_length(vect) * c_vect_elem_size(vect)));
+
     c_vect_push(vect, &i);
     for (i = 0; i < iend; ++i)
         check(*(elem = c_vect_get(vect, i)) == i);

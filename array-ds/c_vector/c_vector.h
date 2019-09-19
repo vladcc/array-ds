@@ -1,5 +1,5 @@
 /*  c_vector.h -- a dynamic array
-    v1.124
+    v1.125
 
     A dynamic array implementation, much like the C++ vector.
     It copies whatever you provide it with inside itself. As such it can contain
@@ -22,7 +22,7 @@
 
     Author: Vladimir Dinev
     vld.dinev@gmail.com
-    2019-08-10
+    2019-09-19
 */
 
 #ifndef C_VECTOR_H
@@ -512,6 +512,24 @@ Returns: The maximum number of elements the array can hold before having to
 grow.
 
 Description: Gets the capacity.
+
+Complexity: O(1)
+*/
+
+int c_vect_data_size_bytes(const c_vector * cv);
+/*
+Returns: The number of bytes used by the vector.
+
+Description: This is calculated as elem_count * elem_size.
+
+Complexity: O(1)
+*/
+
+int c_vect_cap_size_bytes(const c_vector * cv);
+/*
+Returns: The size of the whole data block in bytes.
+
+Description: This is calculated as capacity * elem_size.
 
 Complexity: O(1)
 */
