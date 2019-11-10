@@ -1,7 +1,8 @@
 #ifndef TEST_H
 #define TEST_H
-/* v1.2 */
+/* v1.3 */
 
+#include <stdio.h>
 #include <stdbool.h>
 
 //#define REPORT_VERBOSE

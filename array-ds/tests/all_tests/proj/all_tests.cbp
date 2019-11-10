@@ -33,6 +33,15 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="../../../array_pool/array_pool.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../../array_pool/array_pool.h" />
+		<Unit filename="../../../array_pool/test.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../../array_pool/test.h" />
+		<Unit filename="../../../array_pool/test_array_pool.h" />
 		<Unit filename="../../../bit_vector/bit_vector.c">
 			<Option compilerVar="CC" />
 		</Unit>

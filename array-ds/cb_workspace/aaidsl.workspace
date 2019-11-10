@@ -12,6 +12,7 @@
 		<Project filename="../cv_htable/proj/cv_htable.cbp" />
 		<Project filename="../fixed_array/proj/fixed_array.cbp" />
 		<Project filename="../trie/proj/trie.cbp" />
+		<Project filename="../array_pool/proj/array_pool.cbp" />
 		<Project filename="../tests/all_tests/proj/all_tests.cbp" />
 		<Project filename="../tests/timings/proj/timings.cbp" />
 	</Workspace>

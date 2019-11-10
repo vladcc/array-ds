@@ -101,3 +101,6 @@ c_vector: old v1.124, new v1.125
 Added:
 c_vect_data_size_bytes()
 c_vect_cap_size_bytes()
+
+2019-11-10
+c_vector: old v1.125, new v1.1251 - minor documentation updates

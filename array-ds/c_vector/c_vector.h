@@ -1,5 +1,5 @@
 /*  c_vector.h -- a dynamic array
-    v1.125
+    v1.1251
 
     A dynamic array implementation, much like the C++ vector.
     It copies whatever you provide it with inside itself. As such it can contain
@@ -22,7 +22,7 @@
 
     Author: Vladimir Dinev
     vld.dinev@gmail.com
-    2019-09-19
+    2019-11-10
 */
 
 #ifndef C_VECTOR_H
@@ -43,8 +43,8 @@ additional buffer big enough for a single element, use it, and free() it every
 time. c_vector uses an additional buffer only for c_vect_swap()
 */
 
-// a three way comparison function like compar for qsort()
-typedef int (*fcomp)(const void * one, const void * two);
+// a three way comparison function
+typedef int (*fcomp)(const void * vect_key, const void * your_key);
 
 // Do not use directly
 typedef struct c_vector {
