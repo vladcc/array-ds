@@ -3,18 +3,19 @@
 
 #include "../c_vector/c_vector.h"
 
+typedef unsigned char byte;
+
 // Do not use directly
 typedef struct array_pool {
     c_vector the_pool;
-    int elem_size;
     int node_cap;
 } array_pool;
 
-#define APL_DEF_ELEMS 1024
+#define APL_DEF_SIZE 1024
+#define APL_DEF_ALIGN sizeof(void*)
 
-void * apl_make_elems(array_pool * apl, int elem_size, int num_of_elems);
-#define apl_make(papl, elem_size)\
-apl_make_elems((papl), (elem_size), APL_DEF_ELEMS)
+void * apl_make_size(array_pool * apl, int segment_size_bytes);
+#define apl_make(papl) apl_make_size(papl, APL_DEF_SIZE)
 
 void apl_destroy(array_pool * apl);
 
@@ -22,10 +23,13 @@ void * apl_reuse(array_pool * apl);
 
 void * apl_reset(array_pool * apl);
 
-void * apl_get(array_pool * apl, int array_len);
+byte * apl_get_align(array_pool * apl, int bytes, int alignment);
+#define apl_get(papl, bytes) apl_get_align((papl), (bytes), APL_DEF_ALIGN)
 
-void * apl_insert(array_pool * apl, const void * arr, int arr_len);
+byte * apl_insert(array_pool * apl,
+    const void * arr, int arr_len, int elem_size
+);
 
-void * apl_insert_string(array_pool * apl, const char * str, int str_len);
+byte * apl_insert_string(array_pool * apl, const char * str, int str_len);
 
 #endif

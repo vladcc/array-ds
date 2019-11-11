@@ -1,22 +1,29 @@
 # depslib dependency file v1.0
-1573423875 source:/home/vld/Projects/array-ds/array-ds/array_pool/array_pool.c
+1573859387 source:/home/vld/Projects/array-ds/array-ds/array_pool/array_pool.c
 	<stdlib.h>
 	<string.h>
+	<stdbool.h>
+	<inttypes.h>
 	"array_pool.h"
+	<stdio.h>
 
 1573388351 source:/home/vld/Projects/array-ds/array-ds/array_pool/local_test.c
 	"test_array_pool.h"
 
 1573388247 /home/vld/Projects/array-ds/array-ds/array_pool/test_array_pool.h
 
-1573417543 source:/home/vld/Projects/array-ds/array-ds/array_pool/test.c
+1573862818 source:/home/vld/Projects/array-ds/array-ds/array_pool/test.c
+	<stdio.h>
+	<stdint.h>
+	<string.h>
 	"test.h"
+	"array_pool.h"
 
 1573389312 /home/vld/Projects/array-ds/array-ds/array_pool/test.h
 	<stdio.h>
 	<stdbool.h>
 
-1573422179 /home/vld/Projects/array-ds/array-ds/array_pool/array_pool.h
+1573771757 /home/vld/Projects/array-ds/array-ds/array_pool/array_pool.h
 	"../c_vector/c_vector.h"
 
 1573414606 /home/vld/Projects/array-ds/array-ds/c_vector/c_vector.h
