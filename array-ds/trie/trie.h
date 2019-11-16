@@ -73,7 +73,9 @@ the structure.
 Complexity: O(1)
 */
 
-void trie_str_to_tval(const char * str, trie_node_val * tv_arr, int len, void * tag);
+void trie_str_to_tval(
+    const char * str, trie_node_val * tv_arr, int len, void * tag
+);
 /*
 Returns: Nothing.
 
@@ -98,7 +100,7 @@ Complexity: O(n)
 
 const trie_node * trie_lookup(
     const trie * tre, const trie_node_val * tv_arr, int len
-    );
+);
 /*
 Returns: A pointer to the node matching the value of the last element of tv_arr
 on success, NULL if the sequence of values in tv_arr does not exist in tre.
@@ -108,7 +110,9 @@ Description: Looks ups a tv_arr of length len in the trie.
 Complexity: O(n)
 */
 
-const trie_node * trie_lookup_first(const trie * tre, const trie_node_val * val);
+const trie_node * trie_lookup_first(
+    const trie * tre, const trie_node_val * val
+);
 /*
 Returns: A pointer to the node matching the value of val on success,
 NULL if not found.
@@ -118,7 +122,9 @@ Description: Looks for val in the root set of the trie.
 Complexity: O(1)
 */
 
-const trie_node * trie_lookup_next(const trie_node * tn, const trie_node_val * val);
+const trie_node * trie_lookup_next(
+    const trie_node * tn, const trie_node_val * val
+);
 /*
 Returns: A pointer to the node matching the value of val on success,
 NULL if not found.

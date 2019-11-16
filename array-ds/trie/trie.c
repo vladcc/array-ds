@@ -68,7 +68,9 @@ trie_node_val trie_make_trie_node_val(int val, void * tag)
 }
 //------------------------------------------------------------------------------
 
-void trie_str_to_tval(const char * str, trie_node_val * tv_arr, int len, void * tag)
+void trie_str_to_tval(
+    const char * str, trie_node_val * tv_arr, int len, void * tag
+)
 {
     for (int i = 0; i < len; ++i)
     {
@@ -120,7 +122,9 @@ void * trie_insert(trie * tre, const trie_node_val * tv_arr, int len)
 }
 //------------------------------------------------------------------------------
 
-const trie_node * trie_lookup(const trie * tre, const trie_node_val * arr, int len)
+const trie_node * trie_lookup(
+    const trie * tre, const trie_node_val * arr, int len
+)
 {
     const trie_node * node = trie_lookup_first(tre, arr);
 
@@ -145,7 +149,9 @@ const trie_node * trie_lookup_first(const trie * tre, const trie_node_val * val)
 }
 //------------------------------------------------------------------------------
 
-const trie_node * trie_lookup_next(const trie_node * tn, const trie_node_val * val)
+const trie_node * trie_lookup_next(
+    const trie_node * tn, const trie_node_val * val
+)
 {
     const trie_node * node = NULL;
     c_vector * nset = (c_vector *)get_node_set(tn);

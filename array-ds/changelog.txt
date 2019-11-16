@@ -104,3 +104,7 @@ c_vect_cap_size_bytes()
 
 2019-11-10
 c_vector: old v1.125, new v1.1251 - minor documentation updates
+
+2019-11-16
+added: array_pool v1.0
+fixed: trie function formatting

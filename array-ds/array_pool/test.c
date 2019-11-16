@@ -3,6 +3,7 @@
 #include <string.h>
 #include "test.h"
 #include "array_pool.h"
+#include <limits.h>
 
 static bool test_apl_make(void);
 static bool test_apl_alignment(void);
@@ -40,15 +41,16 @@ typedef struct apl_node {
     char string2[] = "bbbb";
     const int len_str2 = strlen(string2);
 
-    result = apl_insert_string(apl, string1, len_str1);
+    result = (byte *)apl_insert_string(apl, string1, len_str1);
     check(strcmp((char *)result, string1) == 0);
     check(node->bytes_left == node->capacity-sizeof(string1));
     check(result == node->mem);
 
     byte * old = result;
-    result = apl_insert_string(apl, string2, len_str2);
+    result = (byte *)apl_insert_string(apl, string2, len_str2);
     check(strcmp((char *)result, string2) == 0);
     check(node->bytes_left == node->capacity-sizeof(string1)-sizeof(string2));
+    check(!node->bytes_left);
     check(old == result-sizeof(string1));
 
     char string3[] = "The quick brown fox jumped over the lazy dog";
@@ -79,8 +81,27 @@ typedef struct apl_node {
     check(!apl_get_align(apl, 32, 0));
     check(!apl_get_align(apl, 32, -5));
     check(!apl_get_align(apl, 32, 23));
+    check(!apl_get_align(apl, INT_MAX, 2));
+    check(!apl_get(apl, INT_MAX));
     check(!apl_get(apl, 0));
     check(!apl_get(apl, -5));
+
+    check(apl_reuse(apl));
+    check(3 == c_vect_length(the_pool));
+
+    for (int i = 0; i < 3; ++i)
+    {
+        node = c_vect_get(the_pool, i);
+        check(node->bytes_left == node->capacity);
+    }
+
+    check(apl_reset(apl));
+    the_pool = &(apl->the_pool);
+    node = c_vect_get(the_pool, 0);
+    check(1 == c_vect_length(the_pool));
+    check(node->bytes_left == node->capacity);
+    check(node->capacity == seg_size);
+
     apl_destroy(apl);
 
     check(apl_make(apl) == apl);
@@ -88,7 +109,51 @@ typedef struct apl_node {
     node = c_vect_get(the_pool, 0);
     check(node->capacity == APL_DEF_SIZE);
 
-    #error "Finish here"
+    result = apl_get_align(apl, 64, 32);
+    check((uintptr_t)result % 32 == 0);
+
+    result = apl_get_align(apl, 1, 1);
+    result = apl_get_align(apl, 1, 1);
+
+    old = result;
+
+    int arr[] = {1, 2, 3, 4, 5};
+    check((uintptr_t)result % sizeof(int) != 0);
+    result = apl_insert(apl, arr, sizeof(arr)/sizeof(*arr), sizeof(*arr));
+    check((uintptr_t)result % sizeof(*arr) == 0);
+    check(old+3 == result);
+    check(memcmp(result, arr, sizeof(arr)) == 0);
+
+    result = apl_get_align(apl, 1, 1);
+    result = apl_get_align(apl, 1, 1);
+    check((uintptr_t)result % APL_DEF_ALIGN != 0);
+    result = apl_get(apl, 1);
+    check((uintptr_t)result % APL_DEF_ALIGN == 0);
+
+    result = apl_get_align(apl, 1, 1);
+    result = apl_get_align(apl, 1, 1);
+    int align = 64;
+    check((uintptr_t)result % align != 0);
+    result = apl_insert_align(apl, arr,
+        sizeof(arr)/sizeof(*arr), sizeof(*arr), align);
+    check((uintptr_t)result % align == 0);
+    check(memcmp(result, arr, sizeof(arr)) == 0);
+
+    result = apl_get_align(apl, 1, 1);
+    result = apl_get_align(apl, 1, 1);
+    align = 8;
+    check((uintptr_t)result % align != 0);
+    result = (byte *)apl_insert_string_align(apl,
+        string3, strlen(string3), align
+    );
+    check((uintptr_t)result % align == 0);
+    check(strcmp((char *)result, string3) == 0);
+
+    old = result;
+    result = (byte *)apl_insert_string(apl, string1, len_str1);
+    check(result > old);
+    check(strcmp((char *)result, string1) == 0);
+    check(strcmp((char *)old, string3) == 0);
 
     apl_destroy(apl);
     return true;

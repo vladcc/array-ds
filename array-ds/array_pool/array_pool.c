@@ -4,9 +4,6 @@
 #include <inttypes.h>
 #include "array_pool.h"
 
-//DEBUG
-#include <stdio.h>
-
 typedef unsigned char byte;
 
 // Goes into the_pool
@@ -152,11 +149,11 @@ byte * apl_get_align(array_pool * apl, int bytes, int alignment)
 }
 //------------------------------------------------------------------------------
 
-byte * apl_insert(array_pool * apl,
-    const void * arr, int arr_len, int elem_size
+byte * apl_insert_align(array_pool * apl,
+    const void * arr, int arr_len, int elem_size, int alignment
 )
 {
-    void * apl_mem = apl_get_align(apl, arr_len*elem_size, elem_size);
+    void * apl_mem = apl_get_align(apl, arr_len*elem_size, alignment);
 
     if (apl_mem)
         memcpy(apl_mem, arr, arr_len*elem_size);
@@ -165,8 +162,18 @@ byte * apl_insert(array_pool * apl,
 }
 //------------------------------------------------------------------------------
 
-byte * apl_insert_string(array_pool * apl, const char * str, int str_len)
+byte * apl_insert(array_pool * apl,
+    const void * arr, int arr_len, int elem_size
+)
 {
-    return apl_insert(apl, str, str_len+1, sizeof(*str));
+    return apl_insert_align(apl, arr, arr_len, elem_size, elem_size);
+}
+//------------------------------------------------------------------------------
+
+char * apl_insert_string_align(array_pool * apl,
+    const char * str, int str_len, int alignment
+)
+{
+    return (char *)apl_insert(apl, str, str_len+1, alignment);
 }
 //------------------------------------------------------------------------------
